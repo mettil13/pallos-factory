@@ -20,7 +20,22 @@ public class GridManager : MonoBehaviour
     [Header("Cell info")]
     [SerializeField] private float cellSize;
     [SerializeField] private GridDictionary grid;
-    [SerializeField] public Placeable selectedTile;
+    [SerializeField] private Placeable selectedTile;
+    public Placeable SelectedTile {
+        get => selectedTile;
+        set {
+            if(value != selectedTile) {
+                if(selectedTile != null) {
+                    selectedTile.Deselect();
+                }
+                selectedTile = value;
+                if(selectedTile != null) {
+                    selectedTile.Select();
+                }
+            }
+
+        }
+    }
     
 
 

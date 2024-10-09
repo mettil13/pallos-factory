@@ -26,18 +26,21 @@ public class CameraManager : MonoBehaviour
                 RaycastHit? hit = GetWorldObjectMouseHit();
                 if(hit != null) {
                     Placeable tile = ((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>();
-                    GridManager.Instance.selectedTile = tile;
+                    GridManager.Instance.SelectedTile = tile;
+                    tile.Select();
                 }
                 else {
-                    GridManager.Instance.selectedTile = null;
+                    GridManager.Instance.SelectedTile = null;
                 }
-                Debug.Log(GridManager.Instance.selectedTile);
             }
 
-            if (GridManager.Instance.selectedTile == null) {
+            if (GridManager.Instance.SelectedTile == null) {
                 Vector3 movement = oldPanningPosition - GetWorldObjectMouseHitPosition();
                 movement.y = 0;
                 transform.position += movement;
+            }
+            else {
+                GridManager.Instance.SelectedTile.MoveToClosestCellRelativeToWorld(GetWorldObjectMouseHitPosition());
             }
             oldPanningPosition = GetWorldObjectMouseHitPosition();
         }

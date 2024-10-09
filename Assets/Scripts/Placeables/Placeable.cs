@@ -7,21 +7,30 @@ using UnityEngine;
 public class Placeable : MonoBehaviour
 {
     // monobehaviour for the tiles that have something on
-    // cambiare nome in Placeable
 
     [SerializeField] protected Vector2Int position;
     [SerializeField] protected Direction direction;
-    
+
+    private void Start() {
+        Init(GridManager.Instance.GetCellFromWorldPoint(transform.position), 0);
+    }
+
     public virtual void Init(Vector2Int position, Direction direction)
     {
         // pleacable init
         this.position = position;
         this.direction = direction;
     }
-    public void Move(Vector2Int newPosition)
+
+    public void MoveToClosestCellRelativeToWorld(Vector3 worldPosition) {
+        Vector2Int cellPos = GridManager.Instance.GetCellFromWorldPoint(worldPosition);
+        Move(cellPos);
+    }
+    public void Move(Vector2Int gridPosition)
     {
-        if (GridManager.Instance.MoveTile(position, newPosition))
-            position = newPosition;
+        if (GridManager.Instance.MoveTile(position, gridPosition))
+            position = gridPosition;
+            transform.position = GridManager.Instance.GetCellCenter(position);
     }
     public void RotateRight()
     {
@@ -56,5 +65,13 @@ public class Placeable : MonoBehaviour
     public virtual void Repair()
     {
         // repair the structure
+    }
+
+    public void Select() {
+        Debug.Log(gameObject.name + " selected");
+    }
+
+    public void Deselect() {
+        Debug.Log(gameObject.name + " deselected");
     }
 }
