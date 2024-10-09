@@ -7,15 +7,9 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     private static GridManager instance;
-    public GridManager Instance 
+    public static GridManager Instance 
     {
-        get
-        {
-            if (instance == null)
-                instance = this;
-
-            return instance;
-        }
+        get => instance;
     }
 
     // dizionario vector2, struttura
@@ -28,6 +22,17 @@ public class GridManager : MonoBehaviour
     [SerializeField] private GridDictionary grid;
     [SerializeField] public Tile selectedTile;
     
+
+
+    private void Awake() {
+        if(instance == null) {
+            instance = this;
+        }
+        else {
+            Destroy(gameObject);
+        }
+    }
+
     // utility
     public Vector2Int GetCellFromWorldPoint(Vector3 worldPosition)
     {
@@ -44,7 +49,7 @@ public class GridManager : MonoBehaviour
         // prese le coordinate della cella le converte in posizione nel mondo ( centro della cella )
     }
 
-    // se ritorna false non è presente alcun tile nella gridPosition
+    // se ritorna false non ï¿½ presente alcun tile nella gridPosition
     public bool GetTileFromGridPosition(out Tile tile, Vector2Int gridPosition)
     {
         return grid.TryGetValue(gridPosition, out tile);
