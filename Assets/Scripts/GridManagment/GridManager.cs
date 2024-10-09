@@ -28,21 +28,31 @@ public class GridManager : MonoBehaviour
     [SerializeField] private GridDictionary grid;
     [SerializeField] public Tile selectedTile;
     
-
     // utility
     public Vector2Int GetCellFromWorldPoint(Vector3 worldPosition)
     {
-        return Vector2Int.zero;
+        // presa la posizione nel mondo la converto in coordinate di cella ( tenendo conto della cell size )
+        float x = worldPosition.x / cellSize;
+        float y = worldPosition.z / cellSize;
+        return new Vector2Int(Mathf.RoundToInt(x), Mathf.RoundToInt(y));
     }
-    public Vector3 GetCellCenter(Vector2Int position)
+    public Vector3 GetCellCenter(Vector2Int gridPosition)
     {
-        return Vector2.zero;
+        float x = gridPosition.x * cellSize;
+        float z = gridPosition.y * cellSize;
+        return new Vector3(x + transform.position.x, transform.position.y, z + transform.position.z);
+        // prese le coordinate della cella le converte in posizione nel mondo ( centro della cella )
     }
 
-
-
-
-    
+    // se ritorna false non è presente alcun tile nella gridPosition
+    public bool GetTileFromGridPosition(out Tile tile, Vector2Int gridPosition)
+    {
+        return grid.TryGetValue(gridPosition, out tile);
+    }
+    public bool GetTileFromWorldPosition(out Tile tile, Vector3 worldPosition)
+    {
+        return GetTileFromGridPosition(out tile, GetCellFromWorldPoint(worldPosition));
+    }
 }
 
 [Serializable]
