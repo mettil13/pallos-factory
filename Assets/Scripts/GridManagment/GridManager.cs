@@ -25,6 +25,8 @@ public class GridManager : MonoBehaviour
 
     [Header("Cell info")]
     [SerializeField] private float cellSize;
+    [SerializeField] private GridDictionary grid;
+    [SerializeField] public Tile selectedTile;
     
 
     // utility
@@ -76,3 +78,5 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
             this.Add(keys[i], values[i]);
     }
 }
+
+[Serializable] public class GridDictionary : SerializableDictionary<Vector2Int, Tile> { }
