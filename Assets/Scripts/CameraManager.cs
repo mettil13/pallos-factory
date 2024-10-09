@@ -25,7 +25,7 @@ public class CameraManager : MonoBehaviour
 
                 RaycastHit? hit = GetWorldObjectMouseHit();
                 if(hit != null) {
-                    Tile tile = ((RaycastHit)hit).collider.gameObject.GetComponent<Tile>();
+                    Placeable tile = ((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>();
                     GridManager.Instance.selectedTile = tile;
                 }
                 else {

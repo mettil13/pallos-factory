@@ -20,7 +20,7 @@ public class GridManager : MonoBehaviour
     [Header("Cell info")]
     [SerializeField] private float cellSize;
     [SerializeField] private GridDictionary grid;
-    [SerializeField] public Tile selectedTile;
+    [SerializeField] public Placeable selectedTile;
     
 
 
@@ -49,19 +49,36 @@ public class GridManager : MonoBehaviour
         // prese le coordinate della cella le converte in posizione nel mondo ( centro della cella )
     }
 
-    // se ritorna false non � presente alcun tile nella gridPosition
-    public bool GetTileFromGridPosition(out Tile tile, Vector2Int gridPosition)
+    // se ritorna false non è presente alcun tile nella gridPosition
+    public bool GetTileFromGridPosition(out Placeable tile, Vector2Int gridPosition)
     {
         return grid.TryGetValue(gridPosition, out tile);
     }
-    public bool GetTileFromWorldPosition(out Tile tile, Vector3 worldPosition)
+    public bool GetTileFromWorldPosition(out Placeable tile, Vector3 worldPosition)
     {
         return GetTileFromGridPosition(out tile, GetCellFromWorldPoint(worldPosition));
     }
+    public bool ThereIsTileInPosition(Vector2Int gridPosition)
+    {
+        return grid.ContainsKey(gridPosition);
+    }
+
+
+    // se ritorna false non è possibile spostare il tile in new position oppure non esiste un tile in old position
+    public bool MoveTile(Vector2Int oldPosition, Vector2Int newPosition)
+    {
+        if (ThereIsTileInPosition(newPosition)) return false;
+        if (!ThereIsTileInPosition(oldPosition)) return false;
+
+        Placeable tile = grid[oldPosition];
+        grid.Remove(oldPosition);
+        grid.Add(newPosition, tile);
+
+        return true;
+    }
 }
 
-[Serializable]
-public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
+[Serializable] public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
 {
     [SerializeField]
     private List<TKey> keys = new List<TKey>();
@@ -93,5 +110,4 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
             this.Add(keys[i], values[i]);
     }
 }
-
-[Serializable] public class GridDictionary : SerializableDictionary<Vector2Int, Tile> { }
+[Serializable] public class GridDictionary : SerializableDictionary<Vector2Int, Placeable> { }
