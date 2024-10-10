@@ -36,22 +36,42 @@ public class Placeable : MonoBehaviour
         }
         Debug.Log(gridPosition);
     }
-    public void RotateRight()
+
+    protected Direction RotateDirectionRight(Direction direction)
     {
         if (((int)direction) != 0)
             direction = (Direction)((int)direction - 1);
         else
             direction = Direction.XPositive;
 
-        // inserire rotazione della mesh
-        ApplyRotation();
+        return direction;
     }
-    public void RotateLeft()
+    protected Direction RotateDirectionLeft(Direction direction)
     {
         if (((int)direction) != 3)
             direction = (Direction)(((int)direction) + 1);
         else
             direction = Direction.YNegative;
+
+        return direction;
+    }
+    protected Direction RotateDirectionBy(Direction direction, Direction rotateBy)
+    {
+        int finalDirection = ((int)direction) + ((int)rotateBy);
+        if (finalDirection > 3) finalDirection -= 4;
+        return (Direction)(finalDirection);
+    }
+
+    public void RotateRight()
+    {
+        direction = RotateDirectionRight(direction);
+
+        // inserire rotazione della mesh
+        ApplyRotation();
+    }
+    public void RotateLeft()
+    {
+        direction = RotateDirectionLeft(direction);
 
         // inserire rotazione della mesh
         ApplyRotation();

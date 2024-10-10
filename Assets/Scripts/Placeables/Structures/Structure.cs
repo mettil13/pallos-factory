@@ -12,40 +12,13 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
     [SerializeField] protected float darkPalloGenerationProbabilityMultiplayer;
     [SerializeField] protected List<Pallo> pallos;
 
-    [SerializeField] protected bool canInsertBack;
-    [SerializeField] protected bool canInsertRight;
-    [SerializeField] protected bool canInsertLeft;
-    [SerializeField] protected bool canInsertFront;
-
-    public Direction RotateDirectionRight(Direction direction)
-    {
-        if (((int)direction) != 0)
-            direction = (Direction)((int)direction - 1);
-        else
-            direction = Direction.XPositive;
-
-        return direction;
-    }
-    public Direction RotateDirectionLeft(Direction direction)
-    {
-        if (((int)direction) != 3)
-            direction = (Direction)(((int)direction) + 1);
-        else
-            direction = Direction.YNegative;
-
-        return direction;
-    }
+    [SerializeField] protected Direction[] inputs;
+    [SerializeField] protected Direction[] outputs;
 
     public virtual bool CanInsertPalloFrom(Direction previousStructureDirection)
     {
-        Direction tempDirection = direction;
-        if (tempDirection == previousStructureDirection && canInsertBack) return true;
-        tempDirection = RotateDirectionRight(tempDirection);
-        if (tempDirection == previousStructureDirection && canInsertRight) return true;
-        tempDirection = RotateDirectionRight(tempDirection);
-        if (tempDirection == previousStructureDirection && canInsertFront) return true;
-        tempDirection = RotateDirectionRight(tempDirection);
-        if (tempDirection == previousStructureDirection && canInsertLeft) return true;
+        foreach (Direction input in inputs)
+            if (previousStructureDirection == RotateDirectionBy(direction, previousStructureDirection)) return true;
 
         return false;
     }

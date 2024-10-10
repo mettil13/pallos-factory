@@ -80,27 +80,25 @@ public class GridManager : MonoBehaviour
 
 
     // se ritorna false non è possibile spostare il tile in new position oppure non esiste un tile in old position
-    public bool MoveTileInGridCache(Vector2Int oldPosition, Vector2Int newPosition)
+    public bool MoveTileInGridCache(Vector2Int oldGridPosition, Vector2Int newGridPosition)
     {
-        if (ThereIsTileInPosition(newPosition)) return false;
-        if (!ThereIsTileInPosition(oldPosition)) return false;
+        if (ThereIsTileInPosition(newGridPosition)) return false;
+        if (!ThereIsTileInPosition(oldGridPosition)) return false;
 
-        Placeable tile = grid[oldPosition];
-        grid.Remove(oldPosition);
-        grid.Add(newPosition, tile);
+        Placeable tile = grid[oldGridPosition];
+        grid.Remove(oldGridPosition);
+        grid.Add(newGridPosition, tile);
 
         return true;
     }
-
-    public void AddTileToGridCache(Vector2Int position, Placeable tile) {
-        if (!ThereIsTileInPosition(position)) {
-            grid.Add(position, tile);
+    public void AddTileToGridCache(Vector2Int gridPosition, Placeable tile) {
+        if (!ThereIsTileInPosition(gridPosition)) {
+            grid.Add(gridPosition, tile);
         }
     }
-
-    public void RemoveTileFromGridCache(Vector2Int position) {
-        if (ThereIsTileInPosition(position)) {
-            grid.Remove(position);
+    public void RemoveTileFromGridCache(Vector2Int gridPosition) {
+        if (ThereIsTileInPosition(gridPosition)) {
+            grid.Remove(gridPosition);
         }
     }
 }
