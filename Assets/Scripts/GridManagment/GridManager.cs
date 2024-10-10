@@ -19,6 +19,9 @@ public class GridManager : MonoBehaviour
 
     [Header("Cell info")]
     [SerializeField] private float cellSize;
+    public float CellSize {
+        get => cellSize;
+    }
     [SerializeField] private GridDictionary grid;
     [SerializeField] private Placeable selectedTile;
     public Placeable SelectedTile {

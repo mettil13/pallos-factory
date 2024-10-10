@@ -31,10 +31,8 @@ public class Placeable : MonoBehaviour
     {
         if (GridManager.Instance.MoveTileInGridCache(position, gridPosition)) {
             position = gridPosition;
-            Debug.Log(gridPosition + " " + GridManager.Instance.GetCellCenter(gridPosition));
             transform.position = GridManager.Instance.GetCellCenter(gridPosition);
         }
-        Debug.Log(gridPosition);
     }
 
     protected Direction RotateDirectionRight(Direction direction)
