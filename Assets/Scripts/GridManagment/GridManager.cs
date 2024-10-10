@@ -80,7 +80,7 @@ public class GridManager : MonoBehaviour
 
 
     // se ritorna false non è possibile spostare il tile in new position oppure non esiste un tile in old position
-    public bool MoveTile(Vector2Int oldPosition, Vector2Int newPosition)
+    public bool MoveTileInGridCache(Vector2Int oldPosition, Vector2Int newPosition)
     {
         if (ThereIsTileInPosition(newPosition)) return false;
         if (!ThereIsTileInPosition(oldPosition)) return false;
@@ -90,6 +90,18 @@ public class GridManager : MonoBehaviour
         grid.Add(newPosition, tile);
 
         return true;
+    }
+
+    public void AddTileToGridCache(Vector2Int position, Placeable tile) {
+        if (!ThereIsTileInPosition(position)) {
+            grid.Add(position, tile);
+        }
+    }
+
+    public void RemoveTileFromGridCache(Vector2Int position) {
+        if (ThereIsTileInPosition(position)) {
+            grid.Remove(position);
+        }
     }
 }
 
