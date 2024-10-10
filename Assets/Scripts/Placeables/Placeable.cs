@@ -20,6 +20,7 @@ public class Placeable : MonoBehaviour
         // pleacable init
         this.position = position;
         this.direction = direction;
+        GridManager.Instance.AddTileToGridCache(position, this);
     }
 
     public void MoveToClosestCellRelativeToWorld(Vector3 worldPosition) {
@@ -28,9 +29,12 @@ public class Placeable : MonoBehaviour
     }
     public void Move(Vector2Int gridPosition)
     {
-        if (GridManager.Instance.MoveTile(position, gridPosition))
+        if (GridManager.Instance.MoveTileInGridCache(position, gridPosition)) {
             position = gridPosition;
-            transform.position = GridManager.Instance.GetCellCenter(position);
+            Debug.Log(gridPosition + " " + GridManager.Instance.GetCellCenter(gridPosition));
+            transform.position = GridManager.Instance.GetCellCenter(gridPosition);
+        }
+        Debug.Log(gridPosition);
     }
     public void RotateRight()
     {
@@ -73,5 +77,9 @@ public class Placeable : MonoBehaviour
 
     public void Deselect() {
         Debug.Log(gameObject.name + " deselected");
+    }
+
+    private void OnDestroy() {
+        GridManager.Instance.RemoveTileFromGridCache(position);
     }
 }
