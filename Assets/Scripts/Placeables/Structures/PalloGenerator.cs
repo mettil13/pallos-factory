@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PalloGenerator : Structure
 {
-
     private void Update()
     {
-        
+                
     }
 }
