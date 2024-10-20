@@ -1,0 +1,14 @@
+[ 
+    { 
+        "name": "palloGenerator", 
+        "prodValue": 1.00, 
+        "prodPerMinute": 1.00, 
+        "successProbability": 1.00, 
+        "damagePrevention": 0, 
+        "radius": 1.00, 
+        "capacity": 10.00, 
+        "value": 35, 
+        "price": 1, 
+        "luck": 0.05, 
+        "badLuck": 0.02, 
+        "globalBadLuck": 0.01}]
