@@ -6,36 +6,70 @@ using UnityEngine;
 public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
 {
     [SerializeField] protected short capacity;
+
+    [Header("Time")]
     [SerializeField] protected float processingTime;
     [SerializeField] protected float processingTimeMultiplayer;
+    protected float ProcessingTime => processingTime * processingTimeMultiplayer;
+    protected float lastTime = 0;
+    protected bool CanProcess()
+    {
+        if (Time.time - ProcessingTime > lastTime)
+        {
+            lastTime = Time.time;
+            return true;
+        }
+
+        return false;
+    }
+
+    [Header("Dark pallo generation")]
     [SerializeField] protected float darkPalloGenerationProbability;
     [SerializeField] protected float darkPalloGenerationProbabilityMultiplayer;
+    protected float DarkPalloGenerationProbability => darkPalloGenerationProbability * darkPalloGenerationProbabilityMultiplayer;
+
     [SerializeField] protected List<Pallo> pallos;
 
     [SerializeField] protected Direction[] inputs;
     [SerializeField] protected Direction output;
 
+    [Header("Particles")]
+    [SerializeField] ParticleSystem processParticle;
+    
     public virtual bool TryInsertPalloFrom(Direction previousStructureDirection, Pallo pallo)
+    {
+        //Debug.Log(previousStructureDirection + " - " + direction + "  " + gameObject.name);
+        foreach (Direction input in inputs)
+        {
+            //Debug.Log(RotateDirectionBy(direction, input).ToString());
+            if (previousStructureDirection == RotateDirectionBy(RotateDirectionBy(direction, (Direction)(2)), input)) { Debug.Log("pallo get"); return AddPallo(pallo); }
+        }
+        return false;
+    }
+    protected bool AddPallo(Pallo pallo)
     {
         if (pallos.Count >= capacity)
             return false;
-
-        foreach (Direction input in inputs)
-            if (previousStructureDirection == RotateDirectionBy(direction, previousStructureDirection)) { AddPallo(pallo); return true; }
-
-        return false;
-    }
-    private void AddPallo(Pallo pallo)
-    {
+        pallo.Replace(this);
         pallos.Add(pallo);
+        return true;
+    }
+    public bool RemovePallo(Pallo pallo)
+    {
+        if (pallos.Count == 0) return false;
+        pallos.Remove(pallo);
+        return true;
     }
 
-    protected virtual void MovePalloToNext(Pallo palloToMove)
+    protected virtual void MovePalloToNext()
     {
+        if (pallos.Count == 0) return;
+        Pallo palloToMove = pallos[0];
         // research of the nearest structure in the direction
-        Direction directedOut = RotateDirectionBy(direction, output);
+        Direction directionOut = RotateDirectionBy(direction, output);
+        Debug.Log(directionOut.ToString() + " " + output + " " + direction  + "   " + gameObject.name);
         Structure next;
-        if (GetNext(out next, directedOut) && next.TryInsertPalloFrom(directedOut, palloToMove))
+        if (GetNext(out next, directionOut) && next.TryInsertPalloFrom(directionOut, palloToMove))
         {
             // can insert pallo
             ProcessPallo(palloToMove);
@@ -48,6 +82,7 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
         // do transition animation for pallo
         // do effects for pallo
         // do something when the pallo is ready
+        if (processParticle) processParticle.Play();
     }
 
     public void BoostLuck(float intensity)
@@ -75,9 +110,12 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
                 break;
         }
 
-        Placeable Placeable;
-        GridManager.Instance.GetTileFromGridPosition(out Placeable, referencingPosition);
-        if (Placeable.GetType() == typeof(Structure)) { structure = (Structure)Placeable; return true; }
+        Placeable placeable;
+        //bool thereIsTile = ;
+        //bool isStructure = ;
+        //Debug.Log("there is a tile : " + thereIsTile + "   is structure : " + isStructure + "   class name "  + placeable.GetType().ToString());
+        if (GridManager.Instance.GetTileFromGridPosition(out placeable, referencingPosition) && placeable.GetType().IsSubclassOf(typeof(Structure)))
+        { structure = (Structure)placeable; return true; }
 
         structure = null;
         return false;

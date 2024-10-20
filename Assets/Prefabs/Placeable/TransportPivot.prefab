@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 452628044352352582}
   - component: {fileID: 9026405638078252247}
-  m_Layer: 0
+  - component: {fileID: 6138391860384632180}
+  m_Layer: 6
   m_Name: TransportPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,8 +54,30 @@ MonoBehaviour:
   darkPalloGenerationProbability: 0
   darkPalloGenerationProbabilityMultiplayer: 0
   pallos: []
-  inputs: 02000000
+  inputs: 020000000100000003000000
   output: 0
+  processParticle: {fileID: 0}
+--- !u!65 &6138391860384632180
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478975630067962383}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3252577514680099975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,22 +109,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a1deac1732e1eaf4784b84d671151c4c,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1deac1732e1eaf4784b84d671151c4c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1deac1732e1eaf4784b84d671151c4c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1deac1732e1eaf4784b84d671151c4c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1deac1732e1eaf4784b84d671151c4c,
         type: 3}
@@ -116,7 +139,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a1deac1732e1eaf4784b84d671151c4c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a1deac1732e1eaf4784b84d671151c4c,
         type: 3}

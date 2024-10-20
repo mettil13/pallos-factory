@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class PalloTransporter : Structure
 {
-
+    private void Update()
+    {
+        if (CanProcess())
+        {
+            MovePalloToNext();
+        }
+    }
 }

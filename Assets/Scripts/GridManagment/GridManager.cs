@@ -70,6 +70,7 @@ public class GridManager : MonoBehaviour
     // se ritorna false non è presente alcun tile nella gridPosition
     public bool GetTileFromGridPosition(out Placeable tile, Vector2Int gridPosition)
     {
+        //Debug.Log(gridPosition);
         return grid.TryGetValue(gridPosition, out tile);
     }
     public bool GetTileFromWorldPosition(out Placeable tile, Vector3 worldPosition)

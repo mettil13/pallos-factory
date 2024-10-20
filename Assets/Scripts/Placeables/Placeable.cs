@@ -9,6 +9,7 @@ public class Placeable : MonoBehaviour
     // monobehaviour for the tiles that have something on
 
     [SerializeField] protected Vector2Int position;
+    public Vector2Int Position => position;
     [SerializeField] protected Direction direction;
 
     private void Start() {
@@ -19,7 +20,7 @@ public class Placeable : MonoBehaviour
     {
         // pleacable init
         this.position = position;
-        this.direction = direction;
+        //this.direction = direction;
         GridManager.Instance.AddTileToGridCache(position, this);
     }
 
