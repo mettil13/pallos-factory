@@ -2331,7 +2331,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1776341036}
   - component: {fileID: 1776341039}
-  - component: {fileID: 1776341038}
   - component: {fileID: 1776341037}
   m_Layer: 0
   m_Name: GizmoCamera
@@ -2399,14 +2398,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &1776341038
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776341035}
-  m_Enabled: 1
 --- !u!20 &1776341039
 Camera:
   m_ObjectHideFlags: 0
