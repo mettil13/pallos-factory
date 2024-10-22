@@ -26,7 +26,7 @@ public class CameraManager : MonoBehaviour
                 ResetPanningRect(transform.position);
 
                 RaycastHit? hit = GetWorldObjectMouseHit();
-                if(hit == null || ((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>() != GridManager.Instance.SelectedTile) {
+                if(hit == null || ((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>() == null || ((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>() != GridManager.Instance.SelectedTile) {
                     GridManager.Instance.SelectedTile = null;
                 }
             }
