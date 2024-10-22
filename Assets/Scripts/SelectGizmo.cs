@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class SelectGizmo : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    static public SelectGizmo instance;
+
+    private GameObject selectedGO;
+
+    private void Awake() {
+        if(instance == null) {
+            instance = this;
+        }
+        else {
+            Destroy(gameObject);
+        }
+
+        gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void SetGizmoOnGO(GameObject go) {
+        selectedGO = go;
+        transform.position = new Vector3(go.transform.position.x, transform.position.y, go.transform.position.z);
+        gameObject.SetActive(true);
+    }
+
+    public void DeactivateGizmo() {
+        selectedGO = null;
+        gameObject.SetActive(false);
     }
 }

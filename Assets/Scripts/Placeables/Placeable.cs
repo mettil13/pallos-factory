@@ -93,9 +93,11 @@ public class Placeable : MonoBehaviour
 
     public virtual void Select() {
         Debug.Log(gameObject.name + " selected");
+        SelectGizmo.instance.SetGizmoOnGO(gameObject);
     }
     public void Deselect() {
         Debug.Log(gameObject.name + " deselected");
+        SelectGizmo.instance.DeactivateGizmo();
     }
 
     private void OnDestroy() {
