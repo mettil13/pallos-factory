@@ -101,4 +101,17 @@ public class Placeable : MonoBehaviour
     private void OnDestroy() {
         GridManager.Instance.RemoveTileFromGridCache(position);
     }
+
+    public bool IsStructure()
+    {
+        return this.GetType().IsSubclassOf(typeof(Structure));
+    }
+    public bool IsBooster()
+    {
+        return this.GetType().IsSubclassOf(typeof(Booster));
+    }
+    public bool IsTurret()
+    {
+        return this.GetType().IsSubclassOf(typeof(Turret)); 
+    }
 }

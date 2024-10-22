@@ -52,6 +52,7 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
             return false;
         pallo.Replace(this);
         pallos.Add(pallo);
+        lastTime = Time.time;
         return true;
     }
     public bool RemovePallo(Pallo pallo)
@@ -114,7 +115,7 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
         //bool thereIsTile = ;
         //bool isStructure = ;
         //Debug.Log("there is a tile : " + thereIsTile + "   is structure : " + isStructure + "   class name "  + placeable.GetType().ToString());
-        if (GridManager.Instance.GetTileFromGridPosition(out placeable, referencingPosition) && placeable.GetType().IsSubclassOf(typeof(Structure)))
+        if (GridManager.Instance.GetTileFromGridPosition(out placeable, referencingPosition) && placeable.IsStructure())
         { structure = (Structure)placeable; return true; }
 
         structure = null;
