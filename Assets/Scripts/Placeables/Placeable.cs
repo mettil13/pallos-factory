@@ -42,7 +42,7 @@ public class Placeable : MonoBehaviour
         if (((int)direction) != 0)
             direction = (Direction)((int)direction - 1);
         else
-            direction = Direction.XPositive;
+            direction = Direction.YNegative;
 
         return direction;
     }
@@ -51,7 +51,7 @@ public class Placeable : MonoBehaviour
         if (((int)direction) != 3)
             direction = (Direction)(((int)direction) + 1);
         else
-            direction = Direction.YNegative;
+            direction = Direction.XPositive;
 
         return direction;
     }
@@ -116,4 +116,5 @@ public class Placeable : MonoBehaviour
     {
         return this.GetType().IsSubclassOf(typeof(Turret)); 
     }
+
 }

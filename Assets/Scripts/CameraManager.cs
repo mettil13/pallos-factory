@@ -29,28 +29,38 @@ public class CameraManager : MonoBehaviour
                 if(hit == null || ((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>() == null || ((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>() != GridManager.Instance.SelectedTile) {
                     GridManager.Instance.SelectedTile = null;
                 }
+                
+                if(GridManager.Instance.SelectedTile != null) {
+                    ResetPanningRect(GridManager.Instance.SelectedTile.transform.position);
+                }
             }
 
             if (GridManager.Instance.SelectedTile == null) {
                 Vector3 movement = oldPanningPosition - GetWorldFloorMouseHitPosition();
                 movement.y = 0;
                 transform.position += movement;
+                EnlargePanningRect(transform.position);
             }
             else {
                 GridManager.Instance.SelectedTile.MoveToClosestCellRelativeToWorld(GetWorldFloorMouseHitPosition());
+                EnlargePanningRect(GridManager.Instance.SelectedTile.transform.position);
             }
 
             oldPanningPosition = GetWorldFloorMouseHitPosition();
-            EnlargePanningRect(transform.position);
             Debug.DrawLine(new Vector3(panningMouseArea.xMin, 1, panningMouseArea.yMin), new Vector3(panningMouseArea.xMax, 1, panningMouseArea.yMax), Color.red);
         }
         else {
             if (oldIsMouseHeldDown) { // it's the first frame since the mouse button was released
                 if(panningMouseArea.width < GridManager.Instance.CellSize && panningMouseArea.height < GridManager.Instance.CellSize) {
                     RaycastHit? hit = GetWorldObjectMouseHit();
-                    if (hit != null) {
-                        Placeable tile = ((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>();
-                        GridManager.Instance.SelectedTile = tile;
+                    if (hit != null && ((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>() != null) {
+                        if (((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>() == GridManager.Instance.SelectedTile) {
+                            GridManager.Instance.SelectedTile.RotateLeft();
+                        }
+                        else {
+                            Placeable tile = ((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>();
+                            GridManager.Instance.SelectedTile = tile;
+                        }
                     }
                     else {
                         GridManager.Instance.SelectedTile = null;
@@ -103,6 +113,5 @@ public class CameraManager : MonoBehaviour
 
     private void ResetPanningRect(Vector3 center) {
         panningMouseArea.Set(center.x, center.z, 0, 0);
-        Debug.Log("Reset");
     }
 }

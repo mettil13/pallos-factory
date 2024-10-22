@@ -29,4 +29,5 @@ public class SelectGizmo : MonoBehaviour
         selectedGO = null;
         gameObject.SetActive(false);
     }
+
 }
