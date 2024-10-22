@@ -11,12 +11,11 @@ public class Pallo : MonoBehaviour
     [SerializeField] ParticleSystem spawnParticle;
     [SerializeField] ParticleSystem moveParticle;
 
-
-
     public void Collect()
     {
         if (collectParticle) collectParticle.Play();
         container.RemovePallo(this);
+        Destroy(gameObject);
     }
     public void Replace(Structure structure)
     {
@@ -35,5 +34,9 @@ public class Pallo : MonoBehaviour
         transform.eulerAngles = structure.transform.eulerAngles;
 
         container = structure;
+    }
+    private void OnMouseDown()
+    {
+        Debug.Log("hellooooooo");
     }
 }

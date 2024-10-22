@@ -42,7 +42,7 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
         foreach (Direction input in inputs)
         {
             //Debug.Log(RotateDirectionBy(direction, input).ToString());
-            if (previousStructureDirection == RotateDirectionBy(RotateDirectionBy(direction, (Direction)(2)), input)) { Debug.Log("pallo get"); return AddPallo(pallo); }
+            if (previousStructureDirection == RotateDirectionBy(RotateDirectionBy(direction, (Direction)(2)), input)) { return AddPallo(pallo); }
         }
         return false;
     }
@@ -68,7 +68,7 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
         Pallo palloToMove = pallos[0];
         // research of the nearest structure in the direction
         Direction directionOut = RotateDirectionBy(direction, output);
-        Debug.Log(directionOut.ToString() + " " + output + " " + direction  + "   " + gameObject.name);
+        //Debug.Log(directionOut.ToString() + " " + output + " " + direction  + "   " + gameObject.name);
         Structure next;
         if (GetNext(out next, directionOut) && next.TryInsertPalloFrom(directionOut, palloToMove))
         {
@@ -120,5 +120,13 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
 
         structure = null;
         return false;
+    }
+
+    public override void Select()
+    {
+        List<Pallo> tempPallos = new List<Pallo>();
+        foreach (Pallo pallo in pallos) tempPallos.Add(pallo);
+        foreach (Pallo pallo in tempPallos) pallo.Collect();
+        base.Select();
     }
 }

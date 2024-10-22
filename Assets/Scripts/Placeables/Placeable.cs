@@ -33,6 +33,7 @@ public class Placeable : MonoBehaviour
         if (GridManager.Instance.MoveTileInGridCache(position, gridPosition)) {
             position = gridPosition;
             transform.position = GridManager.Instance.GetCellCenter(gridPosition);
+            Select();
         }
     }
 
@@ -90,10 +91,9 @@ public class Placeable : MonoBehaviour
         // repair the structure
     }
 
-    public void Select() {
+    public virtual void Select() {
         Debug.Log(gameObject.name + " selected");
     }
-
     public void Deselect() {
         Debug.Log(gameObject.name + " deselected");
     }
