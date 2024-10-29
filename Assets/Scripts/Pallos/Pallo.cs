@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class Pallo : MonoBehaviour
     [SerializeField] ParticleSystem spawnParticle;
     [SerializeField] ParticleSystem moveParticle;
 
+    public float movementVelocity = 0.3f;
+
     public void Collect()
     {
         if (collectParticle) collectParticle.Play();
@@ -22,8 +25,10 @@ public class Pallo : MonoBehaviour
     {
         // everything to do when a pallo is replaced in a new structure
         if (moveParticle) moveParticle.Play();
-        transform.position = GridManager.Instance.GetCellCenter(structure.Position);
-        transform.eulerAngles = structure.transform.eulerAngles;
+        //transform.position = GridManager.Instance.GetCellCenter(structure.Position);
+        //transform.eulerAngles = structure.transform.eulerAngles;
+        transform.DOMove(GridManager.Instance.GetCellCenter(structure.Position), movementVelocity);
+        transform.DORotate(structure.transform.eulerAngles, movementVelocity);
         
         container = structure;
     }

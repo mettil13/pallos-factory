@@ -21,6 +21,7 @@ public class CameraManager : MonoBehaviour
     {
         bool newIsMouseHeldDown = Input.GetMouseButton(0);
 
+
         if (CheckForUIInteraction()) {
             oldIsMouseHeldDown = newIsMouseHeldDown;
             return;
