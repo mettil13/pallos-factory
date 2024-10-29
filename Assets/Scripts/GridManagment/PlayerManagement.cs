@@ -13,15 +13,14 @@ public class PlayerManagement : MonoBehaviour
 
 
 
-    public void Update() {
-        if (Time.time - lastTime > timeToUpdate) {
+    public void Update() 
+    {
+        if (Time.time - lastTime > timeToUpdate) 
+        {
             lastTime = Time.time;
             selectedLastPoint++;
             if (selectedLastPoint == lastPoints.Length) { selectedLastPoint = 0; }
         }
-
-
-
     }
     public void AddPalloPoints(uint points) 
     {
@@ -29,9 +28,11 @@ public class PlayerManagement : MonoBehaviour
         lastPoints[selectedLastPoint] += points;
     }
     public uint GetCurrentPalloPoints() { return currentPoints; }
-    public float GetPalloPointsPerSecond() {
+    public float GetPalloPointsPerSecond() 
+    {
         float sum = 0;
-        foreach (float point in lastPoints) {
+        foreach (float point in lastPoints) 
+        {
             sum += point;
         }
         float median = sum / lastPoints.Length;
