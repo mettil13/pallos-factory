@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerManagement : MonoBehaviour
 {
+    public static PlayerManagement instance;
+
     [SerializeField] private uint currentPoints;
     [SerializeField] private uint[] lastPoints;
     
@@ -12,7 +14,10 @@ public class PlayerManagement : MonoBehaviour
     private float lastTime;
 
 
-
+    private void Awake()
+    {
+        instance = this;
+    }
     public void Update() 
     {
         if (Time.time - lastTime > timeToUpdate) 
@@ -20,6 +25,7 @@ public class PlayerManagement : MonoBehaviour
             lastTime = Time.time;
             selectedLastPoint++;
             if (selectedLastPoint == lastPoints.Length) { selectedLastPoint = 0; }
+            lastPoints[selectedLastPoint] = 0;
         }
     }
     public void AddPalloPoints(uint points) 
