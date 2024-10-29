@@ -13,11 +13,18 @@ public class PallosCounter : MonoBehaviour
     void Start()
     {
         PlayerManager.instance.CurrentPointsChanged.AddListener(UpdatePallosCounter);
-        UpdatePallosCounter(PlayerManager.instance.CurrentPoints);
+        UpdatePallosCounter((int)PlayerManager.instance.CurrentPoints);
+
+        PlayerManager.instance.LastPointsChanged.AddListener(UpdatePallosPerSeconds);
+        UpdatePallosPerSeconds(PlayerManager.instance.GetPalloPointsPerSecond());
     }
 
-    private void UpdatePallosCounter(uint pallos) {
+    private void UpdatePallosCounter(int pallos) {
         pallosCounter.text = pallos.ToString();
+    }
+
+    private void UpdatePallosPerSeconds(float pallosPerSeconds) {
+        this.pallosPerSeconds.text = pallosPerSeconds.ToString("0.00") + " <sprite name=pallo\">/s";
     }
 
 }
