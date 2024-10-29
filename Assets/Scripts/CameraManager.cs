@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CameraManager : MonoBehaviour
 {
@@ -18,6 +20,12 @@ public class CameraManager : MonoBehaviour
     void Update()
     {
         bool newIsMouseHeldDown = Input.GetMouseButton(0);
+
+        if (CheckForUIInteraction()) {
+            oldIsMouseHeldDown = newIsMouseHeldDown;
+            return;
+        }
+
 
         if (newIsMouseHeldDown) {
 
@@ -113,5 +121,13 @@ public class CameraManager : MonoBehaviour
 
     private void ResetPanningRect(Vector3 center) {
         panningMouseArea.Set(center.x, center.z, 0, 0);
+    }
+
+    private bool CheckForUIInteraction() {
+        PointerEventData pointerData = new PointerEventData(EventSystem.current);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        return results.Count > 0;
     }
 }
