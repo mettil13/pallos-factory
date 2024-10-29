@@ -21,6 +21,8 @@ public class PlayerManager : MonoBehaviour
     private short selectedLastPoint = 0;
     private float timeToUpdate = 1;
     private float lastTime;
+    private float globalBadLuck;
+    public float globalLuck { get => globalBadLuck; set => globalBadLuck = value; }
 
     public UnityEvent<int> CurrentPointsChanged = new UnityEvent<int>();
     public UnityEvent<float> LastPointsChanged = new UnityEvent<float>();
@@ -29,6 +31,7 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        globalLuck = 0;
     }
     public void Update() 
     {

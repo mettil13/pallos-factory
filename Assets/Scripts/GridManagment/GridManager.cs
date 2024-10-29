@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -23,6 +24,8 @@ public class GridManager : MonoBehaviour
         get => cellSize;
     }
     [SerializeField] private GridDictionary grid;
+    public List<Placeable> PlaceablesPlaced => grid.Values.ToList();
+    
     [SerializeField] private Placeable selectedTile;
     public Placeable SelectedTile {
         get => selectedTile;
@@ -104,6 +107,64 @@ public class GridManager : MonoBehaviour
         if (ThereIsTileInPosition(gridPosition)) {
             grid.Remove(gridPosition);
         }
+    }
+    public Vector2Int FindTheNeareastFree(Vector2Int gridPosition)
+    {
+        Vector2Int currentCheckedPosition = gridPosition;
+        Vector2Int center = gridPosition;
+        byte step = 0;
+
+        bool doPositiveY = false;
+        bool doNegativeX = false;
+        bool doNegativeY = false;
+        bool doPositiveX = false;
+
+        while (grid.ContainsKey(currentCheckedPosition)) 
+        {
+            if (doPositiveY)
+            {
+                currentCheckedPosition.y += 1;
+                if (currentCheckedPosition.y >= step + center.y)
+                {
+                    doPositiveY = false;
+                }
+            }
+            else if (doNegativeX)
+            {
+                currentCheckedPosition.x -= 1;
+                if (currentCheckedPosition.x <= -step + center.x)
+                {
+                    doNegativeX = false;
+                }
+            }
+            else if (doNegativeY)
+            {
+                currentCheckedPosition.y -= 1;
+                if (currentCheckedPosition.y <= -step + center.y)
+                {
+                    doNegativeY = false;
+                }
+            }
+            else if (doPositiveX)
+            {
+                currentCheckedPosition.x += 1;
+                if (currentCheckedPosition.x >= step + center.x)
+                {
+                    doPositiveX = false;
+                }
+            }
+            else
+            {
+                step += 1;
+                currentCheckedPosition = new Vector2Int(center.x + step, center.y - step);
+                doPositiveY = true;
+                doNegativeX = true;
+                doNegativeY = true;
+                doPositiveX = true;
+            }
+        }
+
+        return currentCheckedPosition;
     }
 }
 

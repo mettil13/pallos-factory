@@ -14,8 +14,9 @@ public class ShopCard : MonoBehaviour, IPointerClickHandler {
     private int price;
     private int currentQuantity;
     private int maxQuantity;
+    ShopManager shop;
 
-    public void Init(string productName, int price, int currentQuantity, int maxQuantity, Sprite thumbnail) 
+    public void Init(string productName, int price, int currentQuantity, int maxQuantity, Sprite thumbnail, ShopManager shop) 
     {
         this.productName = productName;
         productNameText.text = productName;
@@ -25,10 +26,13 @@ public class ShopCard : MonoBehaviour, IPointerClickHandler {
         this.maxQuantity = maxQuantity;
         quantityText.text = currentQuantity + "/" + maxQuantity;
         this.thumbnail.sprite = thumbnail;
+
+        this.shop = shop;
     }
 
     public void OnPointerClick(PointerEventData eventData) 
     {
+        shop.GenerateStructure(productName);
         Debug.Log("card pressed");
     }
 }

@@ -5,10 +5,10 @@ using UnityEngine;
 
 public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
 {
-    [SerializeField] protected short capacity;
+    [SerializeField] public short capacity;
 
     [Header("Time")]
-    [SerializeField] protected float processingTime;
+    [SerializeField] public float processingTime;
     [SerializeField] protected float processingTimeMultiplayer;
     protected float ProcessingTime => processingTime * processingTimeMultiplayer;
     protected float lastTime = 0;
@@ -23,8 +23,13 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
         return false;
     }
 
+    [Header("Boosted pallo generation")]
+    [SerializeField] public float boostedPalloGenerationProbability;
+    [SerializeField] protected float boostedPalloGenerationProbabilityMultiplayer;
+    protected float BoostedPalloGenerationProbability => boostedPalloGenerationProbability * boostedPalloGenerationProbabilityMultiplayer;
+
     [Header("Dark pallo generation")]
-    [SerializeField] protected float darkPalloGenerationProbability;
+    [SerializeField] public float darkPalloGenerationProbability;
     [SerializeField] protected float darkPalloGenerationProbabilityMultiplayer;
     protected float DarkPalloGenerationProbability => darkPalloGenerationProbability * darkPalloGenerationProbabilityMultiplayer;
 

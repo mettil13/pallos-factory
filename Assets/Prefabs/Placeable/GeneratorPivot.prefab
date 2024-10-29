@@ -48,9 +48,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
   direction: 0
+  placeableReferenced: {fileID: 11400000, guid: de7c47d04a928fe4c8a0809aa454da44,
+    type: 2}
   capacity: 0
   processingTime: 0
   processingTimeMultiplayer: 0
+  boostedPalloGenerationProbability: 0
+  boostedPalloGenerationProbabilityMultiplayer: 0
   darkPalloGenerationProbability: 0
   darkPalloGenerationProbabilityMultiplayer: 0
   pallos: []

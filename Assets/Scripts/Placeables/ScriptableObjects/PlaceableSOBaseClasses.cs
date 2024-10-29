@@ -6,10 +6,17 @@ public class PlaceableSO : ScriptableObject
 {
     public string name;
     public float startingPrice;
-    public float priceMultiplierForEachPurchase;
-    public float maxPurchases;
+    public float priceMultiplier;
+    public int maxPurchases;
+    [Range(0, 1)] public float globalBadLuck;
+
+    public virtual void SetPlaceableInfo(Placeable placeable) 
+    {
+        PlayerManager.instance.globalLuck += globalBadLuck;
+    }
 }
-public class BoosterSO : PlaceableSO {
+public class BoosterSO : PlaceableSO 
+{
     public float radius;
     [Range(0, 1)] public float globalBadLuck;
 }

@@ -5,10 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StructureSO", menuName = "ScriptableObjects/StructureSO", order = 1)]
 public class StructureSO : PlaceableSO 
 {
-    public float prodPerMinute;
+    public float prodPerSecond;
     [Range(0, 1)] public float successProbability;
     public int capacity;
     [Range(0, 1)] public float luck;
     [Range(0, 1)] public float badLuck;
-    [Range(0, 1)] public float globalBadLuck;
+
+    public override void SetPlaceableInfo(Placeable placeable)
+    {
+        if (placeable.IsStructure())
+        {
+            Structure structure = (Structure)placeable;
+            structure.capacity = ((short)capacity);
+            structure.processingTime = 1 / prodPerSecond;
+            structure.boostedPalloGenerationProbability = luck;
+            structure.darkPalloGenerationProbability = badLuck;
+        }
+        base.SetPlaceableInfo(placeable);
+    }
 }

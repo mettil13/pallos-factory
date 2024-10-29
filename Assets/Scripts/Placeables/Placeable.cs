@@ -7,12 +7,14 @@ using UnityEngine;
 public class Placeable : MonoBehaviour
 {
     // monobehaviour for the tiles that have something on
-
     [SerializeField] protected Vector2Int position;
     public Vector2Int Position => position;
     [SerializeField] protected Direction direction;
 
-    private void Start() {
+    [SerializeField] public PlaceableSO placeableReferenced;
+
+    private void Start()
+    {
         Init(GridManager.Instance.GetCellFromWorldPoint(transform.position), 0);
     }
 
@@ -22,6 +24,8 @@ public class Placeable : MonoBehaviour
         this.position = position;
         //this.direction = direction;
         GridManager.Instance.AddTileToGridCache(position, this);
+        string name = gameObject.name;
+        placeableReferenced.SetPlaceableInfo(this);
     }
 
     public void MoveToClosestCellRelativeToWorld(Vector3 worldPosition) {
