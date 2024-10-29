@@ -1070,9 +1070,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeables:
   - {fileID: 11400000, guid: de7c47d04a928fe4c8a0809aa454da44, type: 2}
+  - {fileID: 11400000, guid: 28a456e83f8e24a42b583332c563484b, type: 2}
   placeablesPrefs:
   - {fileID: 1710917829951976033, guid: 728d872cc1e2dc746b93a82f44c44f47, type: 3}
-  - {fileID: 0}
+  - {fileID: 9026405638078252247, guid: 13fc95266d4411c499c5bd7efc201320, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

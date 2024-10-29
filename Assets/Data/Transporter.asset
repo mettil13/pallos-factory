@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa72ec1dd4990644b3531af3747f25f, type: 3}
   m_Name: Transporter
   m_EditorClassIdentifier: 
-  name: palloGenerator
-  startingPrice: 110
-  priceMultiplier: 0
+  name: palloTransporter
+  startingPrice: 90
+  priceMultiplier: 1
   maxPurchases: 1000
   globalBadLuck: 0
   prodPerSecond: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: palloGenerator
   startingPrice: 110
-  priceMultiplier: 0
+  priceMultiplier: 1
   maxPurchases: 1000
   globalBadLuck: 0
   prodPerSecond: 1
