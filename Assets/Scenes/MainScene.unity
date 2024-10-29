@@ -210,6 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 107169871}
   - component: {fileID: 107169872}
+  - component: {fileID: 107169873}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -249,6 +250,20 @@ MonoBehaviour:
     keys: []
     values: []
   selectedTile: {fileID: 0}
+--- !u!114 &107169873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107169870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed0e52a9a4e0bf4682fd3a16e671edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPoints: 0
+  lastPoints: 0000000000000000000000000000000000000000
 --- !u!1 &113335172
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,11 +768,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4661858634637174142, guid: d8b703b26dcf90c44b9797a0beb16745,
         type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4661858634637174142, guid: d8b703b26dcf90c44b9797a0beb16745,
-        type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -874,11 +884,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4661858634637174142, guid: d8b703b26dcf90c44b9797a0beb16745,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 4661858634637174142, guid: d8b703b26dcf90c44b9797a0beb16745,
         type: 3}
@@ -1576,7 +1581,7 @@ PrefabInstance:
     - target: {fileID: 5778214940969767717, guid: e872edf8f410701438b541b57a55ca6a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 79.9
+      value: 79.8999
       objectReference: {fileID: 0}
     - target: {fileID: 5778214940969767717, guid: e872edf8f410701438b541b57a55ca6a,
         type: 3}
@@ -1885,11 +1890,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4661858634637174142, guid: d8b703b26dcf90c44b9797a0beb16745,
         type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4661858634637174142, guid: d8b703b26dcf90c44b9797a0beb16745,
-        type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -2046,7 +2046,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 922503835}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.70229006
+  m_Size: 0.7572017
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2626,7 +2626,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 50
   m_Viewport: {fileID: 509222692}
   m_HorizontalScrollbar: {fileID: 711994155}
   m_VerticalScrollbar: {fileID: 0}
@@ -3004,12 +3004,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
-    m_Right: 20
-    m_Top: 20
-    m_Bottom: 20
+    m_Left: 30
+    m_Right: 30
+    m_Top: 30
+    m_Bottom: 30
   m_ChildAlignment: 0
-  m_Spacing: 20
+  m_Spacing: 30
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -4441,7 +4441,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -4592,11 +4592,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4661858634637174142, guid: d8b703b26dcf90c44b9797a0beb16745,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 4661858634637174142, guid: d8b703b26dcf90c44b9797a0beb16745,
         type: 3}
@@ -4845,11 +4840,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4661858634637174142, guid: d8b703b26dcf90c44b9797a0beb16745,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 4661858634637174142, guid: d8b703b26dcf90c44b9797a0beb16745,
         type: 3}

@@ -15,6 +15,7 @@ public class Pallo : MonoBehaviour
     {
         if (collectParticle) collectParticle.Play();
         container.RemovePallo(this);
+        PlayerManagement.instance.AddPalloPoints(1);
         Destroy(gameObject);
     }
     public void Replace(Structure structure)
