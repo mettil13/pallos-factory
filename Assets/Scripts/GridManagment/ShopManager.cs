@@ -19,13 +19,13 @@ public class ShopManager : MonoBehaviour
         while (c < placeables.Length)
         {
             cards[c] = GameObject.Instantiate(cardPref).GetComponent<ShopCard>();
-            cards[c].Init(placeables)
+            //cards[c].Init(placeables[c].name, placeables[c].startingPrice, )
             c++;
         }
     }
     public void OpenShop()
     {
-
+        
     }
     public void CloseShop()
     {
