@@ -12,16 +12,18 @@ public class PlayerManager : MonoBehaviour
         get => currentPoints;
         private set {
             currentPoints = value;
-            CurrentPointsChanged.Invoke(currentPoints);
+            CurrentPointsChanged.Invoke((int)currentPoints);
         }
     }
+
     [SerializeField] private uint[] lastPoints;
     
     private short selectedLastPoint = 0;
     private float timeToUpdate = 1;
     private float lastTime;
 
-    public UnityEvent<uint> CurrentPointsChanged = new UnityEvent<uint>();
+    public UnityEvent<int> CurrentPointsChanged = new UnityEvent<int>();
+    public UnityEvent<float> LastPointsChanged = new UnityEvent<float>();
 
 
     private void Awake()
@@ -36,6 +38,7 @@ public class PlayerManager : MonoBehaviour
             selectedLastPoint++;
             if (selectedLastPoint == lastPoints.Length) { selectedLastPoint = 0; }
             lastPoints[selectedLastPoint] = 0;
+            LastPointsChanged.Invoke(GetPalloPointsPerSecond());
         }
     }
     public void AddPalloPoints(uint points) 

@@ -14,6 +14,9 @@ public class Pallo : MonoBehaviour
 
     public float movementVelocity = 0.3f;
 
+    private Tweener movementTweener;
+    private Tweener rotationTweener;
+
     public void Collect()
     {
         if (collectParticle) collectParticle.Play();
@@ -25,10 +28,8 @@ public class Pallo : MonoBehaviour
     {
         // everything to do when a pallo is replaced in a new structure
         if (moveParticle) moveParticle.Play();
-        //transform.position = GridManager.Instance.GetCellCenter(structure.Position);
-        //transform.eulerAngles = structure.transform.eulerAngles;
-        transform.DOMove(GridManager.Instance.GetCellCenter(structure.Position), movementVelocity);
-        transform.DORotate(structure.transform.eulerAngles, movementVelocity);
+        movementTweener = transform.DOMove(GridManager.Instance.GetCellCenter(structure.Position), movementVelocity);
+        rotationTweener = transform.DORotate(structure.transform.eulerAngles, movementVelocity);
         
         container = structure;
     }
@@ -43,6 +44,16 @@ public class Pallo : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        Debug.Log("hellooooooo");
+        //Debug.Log("hellooooooo");
+    }
+
+    private void OnDestroy() {
+        if(movementTweener != null) {
+            movementTweener.Kill();
+        }
+
+        if(rotationTweener != null) {
+            rotationTweener.Kill();
+        }
     }
 }
