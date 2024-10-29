@@ -1,17 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class PlayerManagement : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
-    public static PlayerManagement instance;
+    public static PlayerManager instance;
 
     [SerializeField] private uint currentPoints;
+    public uint CurrentPoints {
+        get => currentPoints;
+        private set {
+            currentPoints = value;
+            CurrentPointsChanged.Invoke(currentPoints);
+        }
+    }
     [SerializeField] private uint[] lastPoints;
     
     private short selectedLastPoint = 0;
     private float timeToUpdate = 1;
     private float lastTime;
+
+    public UnityEvent<uint> CurrentPointsChanged = new UnityEvent<uint>();
 
 
     private void Awake()
@@ -30,10 +40,10 @@ public class PlayerManagement : MonoBehaviour
     }
     public void AddPalloPoints(uint points) 
     {
-        currentPoints += points;
+        CurrentPoints += points;
         lastPoints[selectedLastPoint] += points;
     }
-    public uint GetCurrentPalloPoints() { return currentPoints; }
+    public uint GetCurrentPalloPoints() { return CurrentPoints; }
     public float GetPalloPointsPerSecond() 
     {
         float sum = 0;
