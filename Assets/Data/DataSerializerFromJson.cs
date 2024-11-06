@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -15,18 +16,36 @@ public class DataSerializerFromJson : MonoBehaviour
 
     public void DeserializeJSONToSO(string json) {
         List<string> dataList = FromJSONListToStringList(json);
-        List<Dictionary<string, string>> rawData = new List<Dictionary<string, string>>();
         List<NamePeaker> dataNames = new List<NamePeaker>();
-        foreach(string str in dataList) {
-            rawData.Add(JsonUtility.FromJson<Dictionary<string, string>>(str));
-            dataNames.Add(JsonUtility.FromJson<NamePeaker>(str));
+        for(int i = 0; i < dataList.Count; i++) {
+            NamePeaker name = JsonUtility.FromJson<NamePeaker>(dataList[i]);
+            dataNames.Add(name);
+            try {
+                //Debug.Log(name.name.Substring(0, 1).ToUpper() + name.name.Substring(1, name.name.Length - 1) + "SO");
+                Type t = Type.GetType(name.name.Substring(0, 1).ToUpper() + name.name.Substring(1, name.name.Length - 1) + "SO");
+                if(t == null) {
+                    t = typeof(StructureSO);
+                }
+
+                if(name.name == "turret" || name.name == "autoCleaner") {
+                    t = typeof(PalloBotSO);
+                }
+
+
+                var myScriptableObject = AssetDatabase.LoadAssetAtPath("Assets/Data/StructuresFromJson/" + name.name + ".asset", t);
+                if(myScriptableObject == null) {
+                    myScriptableObject = ScriptableObject.CreateInstance(t);
+                    AssetDatabase.CreateAsset(myScriptableObject, "Assets/Data/StructuresFromJson/" + name.name + ".asset");
+                }
+                JsonUtility.FromJsonOverwrite(dataList[i], myScriptableObject);
+                EditorUtility.SetDirty(myScriptableObject);
+                AssetDatabase.SaveAssets();
+            }
+            catch {
+
+            }
         }
 
-        Debug.Log(dataNames[0].name);
-
-        StructureSO myScriptableObject = ScriptableObject.CreateInstance<StructureSO>();
-        AssetDatabase.CreateAsset(myScriptableObject, "Assets/NewSO.asset"); // TODO: mark it as dirty
-        JsonUtility.FromJsonOverwrite(dataList[0], myScriptableObject);
     }
 
     private List<string> FromJSONListToStringList(string json) {

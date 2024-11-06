@@ -18,5 +18,4 @@ public class PlaceableSO : ScriptableObject
 public class BoosterSO : PlaceableSO 
 {
     public float radius;
-    [Range(0, 1)] public float globalBadLuck;
 }

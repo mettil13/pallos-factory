@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aa72ec1dd4990644b3531af3747f25f, type: 3}
-  m_Name: NewSO
+  m_Name: palloSplitter
   m_EditorClassIdentifier: 
-  name: 
-  price: 0
-  prodPerMinute: 0
-  successProbability: 0
-  capacity: 0
+  name: palloSplitter
+  startingPrice: 2
+  priceMultiplier: 1.5
+  maxPurchases: 0
+  globalBadLuck: 0.01
+  prodPerSecond: 1
+  successProbability: 1
+  capacity: 1
   luck: 0
   badLuck: 0
-  globalBadLuck: 0

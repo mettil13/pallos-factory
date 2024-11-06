@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa72ec1dd4990644b3531af3747f25f, type: 3}
+  m_Name: palloTransporter
+  m_EditorClassIdentifier: 
+  name: palloTransporter
+  startingPrice: 2
+  priceMultiplier: 1.5
+  maxPurchases: 0
+  globalBadLuck: 0.01
+  prodPerSecond: 1
+  successProbability: 1
+  capacity: 1
+  luck: 0
+  badLuck: 0

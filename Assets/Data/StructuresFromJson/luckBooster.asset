@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c76eed0978d894dad82bde425f370a, type: 3}
+  m_Name: luckBooster
+  m_EditorClassIdentifier: 
+  name: luckBooster
+  startingPrice: 40
+  priceMultiplier: 2.25
+  maxPurchases: 0
+  globalBadLuck: 0.04
+  radius: 3
+  additionalLuck: 0.25
