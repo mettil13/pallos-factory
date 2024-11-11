@@ -12,11 +12,17 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
     [SerializeField] protected float processingTimeMultiplayer;
     protected float ProcessingTime => processingTime * processingTimeMultiplayer;
     protected float lastTime = 0;
+
+    private bool waitNextFrame;
     protected bool CanProcess()
     {
+        //if (waitNextFrame)
+        //{ waitNextFrame = false; return true; }
+
         if (Time.time - ProcessingTime > lastTime)
         {
             lastTime = Time.time;
+            //waitNextFrame = true;
             return true;
         }
 
@@ -40,6 +46,8 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
 
     [Header("Particles")]
     [SerializeField] ParticleSystem processParticle;
+
+    Coroutine moveRoutine;
     
     public virtual bool TryInsertPalloFrom(Direction previousStructureDirection, Pallo pallo)
     {
@@ -69,20 +77,35 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
 
     protected virtual void MovePalloToNext()
     {
-        if (pallos.Count == 0) return;
-        Pallo palloToMove = pallos[0];
-        // research of the nearest structure in the direction
-        Direction directionOut = RotateDirectionBy(direction, output);
-        //Debug.Log(directionOut.ToString() + " " + output + " " + direction  + "   " + gameObject.name);
-        Structure next;
-        if (GetNext(out next, directionOut) && next.TryInsertPalloFrom(directionOut, palloToMove))
-        {
-            // can insert pallo
-            ProcessPallo(palloToMove);
-            pallos.RemoveAt(0);
-        }
-        // move pallo to next
+        if (moveRoutine != null) StopCoroutine(moveRoutine);
+        moveRoutine = StartCoroutine(MoveRoutine());
     }
+    protected IEnumerator MoveRoutine()
+    {
+        bool done = false;
+        while (true)
+        {
+            if (pallos.Count == 0) yield break;
+            Pallo palloToMove = pallos[0];
+            // research of the nearest structure in the direction
+            Direction directionOut = RotateDirectionBy(direction, output);
+            //Debug.Log(directionOut.ToString() + " " + output + " " + direction  + "   " + gameObject.name);
+            Structure next;
+            if (GetNext(out next, directionOut) && next.TryInsertPalloFrom(directionOut, palloToMove))
+            {
+                // can insert pallo
+                ProcessPallo(palloToMove);
+                pallos.RemoveAt(0);
+                yield break;
+            }
+            // move pallo to next
+            yield return new WaitForSeconds(0.1f);
+            // exit if done
+            if (done) yield break;
+            done = true;
+        }
+    }
+
     protected virtual void ProcessPallo(Pallo pallo)
     {
         // do transition animation for pallo

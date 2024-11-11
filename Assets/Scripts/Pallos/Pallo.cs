@@ -29,7 +29,7 @@ public class Pallo : MonoBehaviour
         // everything to do when a pallo is replaced in a new structure
         if (moveParticle) moveParticle.Play();
         movementTweener = transform.DOMove(GridManager.Instance.GetCellCenter(structure.Position), movementVelocity);
-        rotationTweener = transform.DORotate(structure.transform.eulerAngles, movementVelocity);
+        rotationTweener = transform.DORotate(-structure.transform.eulerAngles, movementVelocity);
         
         container = structure;
     }

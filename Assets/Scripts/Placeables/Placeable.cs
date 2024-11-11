@@ -26,6 +26,7 @@ public class Placeable : MonoBehaviour
         GridManager.Instance.AddTileToGridCache(position, this);
         string name = gameObject.name;
         placeableReferenced.SetPlaceableInfo(this);
+        ApplyRotation();
     }
 
     public void MoveToClosestCellRelativeToWorld(Vector3 worldPosition) {
@@ -43,7 +44,7 @@ public class Placeable : MonoBehaviour
 
     protected Direction RotateDirectionRight(Direction direction)
     {
-        if (((int)direction) != 0)
+        if (((int)direction) > 0)
             direction = (Direction)((int)direction - 1);
         else
             direction = Direction.YNegative;
@@ -52,7 +53,7 @@ public class Placeable : MonoBehaviour
     }
     protected Direction RotateDirectionLeft(Direction direction)
     {
-        if (((int)direction) != 3)
+        if (((int)direction) < 3)
             direction = (Direction)(((int)direction) + 1);
         else
             direction = Direction.XPositive;
