@@ -42,7 +42,10 @@ public class GridManager : MonoBehaviour
 
         }
     }
-    
+
+    [Header("Containers")]
+    [SerializeField] public Transform PlaceableContainer;
+    [SerializeField] public Transform PallosContainer;
 
 
     private void Awake() {
@@ -101,6 +104,7 @@ public class GridManager : MonoBehaviour
     public void AddTileToGridCache(Vector2Int gridPosition, Placeable tile) {
         if (!ThereIsTileInPosition(gridPosition)) {
             grid.Add(gridPosition, tile);
+            tile.transform.parent = PlaceableContainer;
         }
     }
     public void RemoveTileFromGridCache(Vector2Int gridPosition) {

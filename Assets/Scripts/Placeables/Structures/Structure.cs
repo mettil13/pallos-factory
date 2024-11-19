@@ -154,7 +154,14 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
     {
         List<Pallo> tempPallos = new List<Pallo>();
         foreach (Pallo pallo in pallos) tempPallos.Add(pallo);
-        foreach (Pallo pallo in tempPallos) pallo.Collect();
+        foreach (Pallo pallo in tempPallos) pallo.HandCollect();
         base.Select();
+    }
+    protected override void ApplyRotation()
+    {
+        List<Pallo> tempPallos = new List<Pallo>();
+        foreach (Pallo pallo in pallos) tempPallos.Add(pallo);
+        foreach (Pallo pallo in tempPallos) pallo.HandCollect();
+        base.ApplyRotation();
     }
 }

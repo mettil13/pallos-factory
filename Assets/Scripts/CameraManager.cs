@@ -64,7 +64,7 @@ public class CameraManager : MonoBehaviour
                     RaycastHit? hit = GetWorldObjectMouseHit();
                     if (hit != null && ((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>() != null) {
                         if (((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>() == GridManager.Instance.SelectedTile) {
-                            GridManager.Instance.SelectedTile.RotateLeft();
+                            GridManager.Instance.SelectedTile.RotateRight();
                         }
                         else {
                             Placeable tile = ((RaycastHit)hit).collider.gameObject.GetComponent<Placeable>();

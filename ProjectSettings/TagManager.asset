@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - palloGenerator
+  - palloTransporter
+  - palloCollector
+  - palloSplitter
+  - palloUpgrader
+  - palloDuplicator
   layers:
   - Default
   - TransparentFX

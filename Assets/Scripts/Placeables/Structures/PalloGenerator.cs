@@ -13,6 +13,7 @@ public class PalloGenerator : Structure
             GameObject palloObj = GameObject.Instantiate(palloPref);
             Pallo pallo = palloObj.GetComponent<Pallo>();
             pallo.ReplaceInstantly(this);
+            pallo.transform.parent = GridManager.Instance.PallosContainer;
             if (!AddPallo(pallo)) GameObject.Destroy(palloObj);
             MovePalloToNext();
         }

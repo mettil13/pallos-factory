@@ -60,4 +60,16 @@ public class PlayerManager : MonoBehaviour
         float median = sum / lastPoints.Length;
         return median;
     }
+    public void RemovePoints(uint pointsToRemove)
+    {
+        if (currentPoints > pointsToRemove)
+        {
+            CurrentPointsChanged.Invoke(((int)currentPoints));
+            currentPoints -= pointsToRemove;
+            return;
+        }
+
+        currentPoints = 0;
+        CurrentPointsChanged.Invoke(((int)currentPoints));
+    }
 }

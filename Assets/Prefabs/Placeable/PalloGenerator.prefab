@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 9089211569301035583}
   - component: {fileID: 1710917829951976033}
   - component: {fileID: 7020404565040611783}
+  - component: {fileID: 3765829184488483259}
   m_Layer: 6
-  m_Name: GeneratorPivot
-  m_TagString: Untagged
+  m_Name: PalloGenerator
+  m_TagString: palloGenerator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +53,7 @@ MonoBehaviour:
     type: 2}
   capacity: 0
   processingTime: 0
-  processingTimeMultiplayer: 0
+  processingTimeMultiplayer: 1
   boostedPalloGenerationProbability: 0
   boostedPalloGenerationProbabilityMultiplayer: 0
   darkPalloGenerationProbability: 0
@@ -84,6 +85,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &3765829184488483259
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6275653538249259559}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 34ec8f039a2f90543b2d95742818cc30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2163630616420316196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -167,6 +189,51 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ac7415559a374c5488b61ea33907d63d, type: 2}
+    - target: {fileID: -2271502847731017999, guid: 16191ca6aa2f6e14caf14a2182ce4331,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: -2271502847731017999, guid: 16191ca6aa2f6e14caf14a2182ce4331,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.876
+      objectReference: {fileID: 0}
+    - target: {fileID: -2271502847731017999, guid: 16191ca6aa2f6e14caf14a2182ce4331,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.53941506
+      objectReference: {fileID: 0}
+    - target: {fileID: -2271502847731017999, guid: 16191ca6aa2f6e14caf14a2182ce4331,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.45719966
+      objectReference: {fileID: 0}
+    - target: {fileID: -2271502847731017999, guid: 16191ca6aa2f6e14caf14a2182ce4331,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.44936785
+      objectReference: {fileID: 0}
+    - target: {fileID: -2271502847731017999, guid: 16191ca6aa2f6e14caf14a2182ce4331,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.54595643
+      objectReference: {fileID: 0}
+    - target: {fileID: -2271502847731017999, guid: 16191ca6aa2f6e14caf14a2182ce4331,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 100.29199
+      objectReference: {fileID: 0}
+    - target: {fileID: -2271502847731017999, guid: 16191ca6aa2f6e14caf14a2182ce4331,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -175.367
+      objectReference: {fileID: 0}
+    - target: {fileID: -2271502847731017999, guid: 16191ca6aa2f6e14caf14a2182ce4331,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -85.44101
+      objectReference: {fileID: 0}
     - target: {fileID: -1461304994638716399, guid: 16191ca6aa2f6e14caf14a2182ce4331,
         type: 3}
       propertyPath: m_MotionVectors
@@ -186,7 +253,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ac7415559a374c5488b61ea33907d63d, type: 2}
+      objectReference: {fileID: 2100000, guid: 479c1dbd772e5cd47b58b12862220f69, type: 2}
     - target: {fileID: 919132149155446097, guid: 16191ca6aa2f6e14caf14a2182ce4331,
         type: 3}
       propertyPath: m_Name
@@ -231,7 +298,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ac7415559a374c5488b61ea33907d63d, type: 2}
+      objectReference: {fileID: -876546973899608171, guid: 2052ff70121320a4faf805689257264a,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

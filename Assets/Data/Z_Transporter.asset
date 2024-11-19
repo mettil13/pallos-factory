@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aa72ec1dd4990644b3531af3747f25f, type: 3}
-  m_Name: palloCollector
+  m_Name: Z_Transporter
   m_EditorClassIdentifier: 
-  name: palloCollector
-  startingPrice: 5
-  priceMultiplier: 5
-  maxPurchases: 20
-  globalBadLuck: 0.02
+  name: palloTransporter
+  startingPrice: 2
+  priceMultiplier: 1.07
+  maxPurchases: 200
+  globalBadLuck: 0
   prodPerSecond: 1
   successProbability: 1
   capacity: 1
   luck: 0
-  badLuck: 0.07
+  badLuck: 0

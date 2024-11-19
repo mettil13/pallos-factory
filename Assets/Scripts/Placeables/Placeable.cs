@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
@@ -81,10 +82,12 @@ public class Placeable : MonoBehaviour
         // inserire rotazione della mesh
         ApplyRotation();
     }
-    private void ApplyRotation()
+    protected virtual void ApplyRotation()
     {
         // inserire rotazione della mesh
-        transform.eulerAngles = Vector2.up * ((int)direction) * 90;
+        //transform.eulerAngles = -Vector2.up * ((int)direction) * 90;
+        transform.DOKill();
+        transform.DORotate(-Vector2.up * ((int)direction) * 90, 0.1f, RotateMode.Fast);
     }
 
     public virtual void Corrupt()
@@ -97,11 +100,11 @@ public class Placeable : MonoBehaviour
     }
 
     public virtual void Select() {
-        Debug.Log(gameObject.name + " selected");
+        //Debug.Log(gameObject.name + " selected");
         SelectGizmo.instance.SetGizmoOnGO(gameObject);
     }
     public void Deselect() {
-        Debug.Log(gameObject.name + " deselected");
+        //Debug.Log(gameObject.name + " deselected");
         SelectGizmo.instance.DeactivateGizmo();
     }
 
