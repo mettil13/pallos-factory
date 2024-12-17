@@ -1836,6 +1836,7 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   direction: 0
   placeableReferenced: {fileID: 0}
+  isCorrupted: 0
 --- !u!65 &563985878
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2397,6 +2398,7 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   direction: 0
   placeableReferenced: {fileID: 0}
+  isCorrupted: 0
 --- !u!65 &721384940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2868,6 +2870,7 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   direction: 0
   placeableReferenced: {fileID: 0}
+  isCorrupted: 0
 --- !u!65 &919067750
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -95,6 +95,12 @@ public class Placeable : MonoBehaviour
         transform.DORotate(-Vector2.up * ((int)direction) * 90, 0.1f, RotateMode.Fast);
     }
 
+    public virtual void Lock() {
+
+    }
+    public virtual void Unlock() {
+        Repair();
+    }
     public virtual void Corrupt()
     {
         isCorrupted = true;
@@ -102,6 +108,7 @@ public class Placeable : MonoBehaviour
     public virtual void Repair()
     {
         isCorrupted = false;
+        Init(position, direction);
     }
 
     public virtual void Select() {

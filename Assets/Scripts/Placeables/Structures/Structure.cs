@@ -164,4 +164,9 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
         foreach (Pallo pallo in tempPallos) pallo.HandCollect();
         base.ApplyRotation();
     }
+
+    public override void Lock() {
+        base.Lock();
+        capacity = 0;
+    }
 }
