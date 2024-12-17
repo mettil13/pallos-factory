@@ -18,21 +18,21 @@ public class ShopCard : MonoBehaviour, IPointerClickHandler {
     private int maxQuantity;
     ShopManager shop;
 
-    public void Init(string productName, int price, int currentQuantity, int maxQuantity, Sprite thumbnail, ShopManager shop) 
+    public void Init(string productName, int price, int currentQuantity, /*int maxQuantity, */Sprite thumbnail, ShopManager shop) 
     {
         this.productName = productName;
         productNameText.text = productName;
         this.price = price;
         priceText.text = price + " <sprite name=\"pallo\">";
         this.currentQuantity = currentQuantity;
-        this.maxQuantity = maxQuantity;
-        quantityText.text = currentQuantity + "/" + maxQuantity;
+        //this.maxQuantity = maxQuantity;
+        //quantityText.text = currentQuantity + "/" + maxQuantity;
         this.thumbnail.sprite = thumbnail;
         this.shop = shop;
 
         if (PlayerManager.instance.CurrentPoints < price) { priceText.color = Color.red; UnActive(); }
         else { priceText.color = Color.green; Active(); }
-        if (this.currentQuantity >= this.maxQuantity) UnActive();
+        //if (this.currentQuantity >= this.maxQuantity) UnActive();
     }
 
     public void UnActive()
@@ -57,7 +57,7 @@ public class ShopCard : MonoBehaviour, IPointerClickHandler {
         transform.DOScale(1, 0.1f).SetUpdate(true);
 
         if (PlayerManager.instance.CurrentPoints < price) { shop.CannotBuyError(((uint)price)); return; }
-        if (currentQuantity >= maxQuantity) { shop.ReachedMaximumError(((uint)currentQuantity), ((uint)maxQuantity)); return; }
+        //if (currentQuantity >= maxQuantity) { shop.ReachedMaximumError(((uint)currentQuantity), ((uint)maxQuantity)); return; }
         
         PlayerManager.instance.RemovePoints(((uint)price));
         shop.GenerateStructure(productName);

@@ -15,7 +15,6 @@ MonoBehaviour:
   name: speedBooster
   startingPrice: 50
   priceMultiplier: 3
-  maxPurchases: 0
   globalBadLuck: 0.04
   radius: 3
   additionalSpeed: 0.5

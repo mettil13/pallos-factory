@@ -11,6 +11,7 @@ public class StructureSO : PlaceableSO
     [Range(0, 1)] public float luck;
     [Range(0, 1)] public float badLuck;
 
+
     public override void SetPlaceableInfo(Placeable placeable)
     {
         if (placeable.IsStructure())

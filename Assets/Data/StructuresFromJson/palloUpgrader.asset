@@ -15,7 +15,6 @@ MonoBehaviour:
   name: palloUpgrader
   startingPrice: 30
   priceMultiplier: 2
-  maxPurchases: 0
   globalBadLuck: 0.02
   prodPerSecond: 0.75
   successProbability: 0.33

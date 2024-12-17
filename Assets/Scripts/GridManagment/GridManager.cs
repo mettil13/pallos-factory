@@ -5,11 +5,9 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
-{
+public class GridManager : MonoBehaviour {
     private static GridManager instance;
-    public static GridManager Instance 
-    {
+    public static GridManager Instance {
         get => instance;
     }
 
@@ -25,17 +23,17 @@ public class GridManager : MonoBehaviour
     }
     [SerializeField] private GridDictionary grid;
     public List<Placeable> PlaceablesPlaced => grid.Values.ToList();
-    
+
     [SerializeField] private Placeable selectedTile;
     public Placeable SelectedTile {
         get => selectedTile;
         set {
-            if(value != selectedTile) {
-                if(selectedTile != null) {
+            if (value != selectedTile) {
+                if (selectedTile != null) {
                     selectedTile.Deselect();
                 }
                 selectedTile = value;
-                if(selectedTile != null) {
+                if (selectedTile != null) {
                     selectedTile.Select();
                 }
             }
@@ -47,9 +45,11 @@ public class GridManager : MonoBehaviour
     [SerializeField] public Transform PlaceableContainer;
     [SerializeField] public Transform PallosContainer;
 
+    [Header("Game Settings")]
+    [SerializeField] public PalloSettings palloSettings;
 
     private void Awake() {
-        if(instance == null) {
+        if (instance == null) {
             instance = this;
         }
         else {
@@ -58,15 +58,13 @@ public class GridManager : MonoBehaviour
     }
 
     // utility
-    public Vector2Int GetCellFromWorldPoint(Vector3 worldPosition)
-    {
+    public Vector2Int GetCellFromWorldPoint(Vector3 worldPosition) {
         // presa la posizione nel mondo la converto in coordinate di cella ( tenendo conto della cell size )
         float x = worldPosition.x / cellSize;
         float y = worldPosition.z / cellSize;
         return new Vector2Int(Mathf.RoundToInt(x), Mathf.RoundToInt(y));
     }
-    public Vector3 GetCellCenter(Vector2Int gridPosition)
-    {
+    public Vector3 GetCellCenter(Vector2Int gridPosition) {
         float x = gridPosition.x * cellSize;
         float z = gridPosition.y * cellSize;
         return new Vector3(x + transform.position.x, transform.position.y, z + transform.position.z);
@@ -74,24 +72,20 @@ public class GridManager : MonoBehaviour
     }
 
     // se ritorna false non è presente alcun tile nella gridPosition
-    public bool GetTileFromGridPosition(out Placeable tile, Vector2Int gridPosition)
-    {
+    public bool GetTileFromGridPosition(out Placeable tile, Vector2Int gridPosition) {
         //Debug.Log(gridPosition);
         return grid.TryGetValue(gridPosition, out tile);
     }
-    public bool GetTileFromWorldPosition(out Placeable tile, Vector3 worldPosition)
-    {
+    public bool GetTileFromWorldPosition(out Placeable tile, Vector3 worldPosition) {
         return GetTileFromGridPosition(out tile, GetCellFromWorldPoint(worldPosition));
     }
-    public bool ThereIsTileInPosition(Vector2Int gridPosition)
-    {
+    public bool ThereIsTileInPosition(Vector2Int gridPosition) {
         return grid.ContainsKey(gridPosition);
     }
 
 
     // se ritorna false non è possibile spostare il tile in new position oppure non esiste un tile in old position
-    public bool MoveTileInGridCache(Vector2Int oldGridPosition, Vector2Int newGridPosition)
-    {
+    public bool MoveTileInGridCache(Vector2Int oldGridPosition, Vector2Int newGridPosition) {
         if (ThereIsTileInPosition(newGridPosition)) return false;
         if (!ThereIsTileInPosition(oldGridPosition)) return false;
 
@@ -112,8 +106,29 @@ public class GridManager : MonoBehaviour
             grid.Remove(gridPosition);
         }
     }
-    public Vector2Int FindTheNeareastFree(Vector2Int gridPosition)
-    {
+    public Vector2Int FindTheNeareastFree(Vector2Int gridPosition) {
+        return SearchNearestUntilCondition(gridPosition, (Vector2Int placeablePos) => {
+            return !grid.ContainsKey(placeablePos); // search for a tile that does NOT contains a placeable
+        });
+    }
+
+    int maxCheck = 666;
+    public Vector2Int FindTheNeareastPlaceable(Vector2Int gridPosition) {
+        int iteration = 0;
+        return SearchNearestUntilCondition(gridPosition, (Vector2Int placeablePos) => {
+            iteration++;
+            
+            bool found = false;
+            if(grid.TryGetValue(placeablePos, out Placeable placeable)) {
+                found = !placeable.IsCorrupted;
+            }
+
+            return found || iteration > maxCheck;
+        });
+    }
+
+    public delegate bool searchCondition(Vector2Int placeablePos);
+    public Vector2Int SearchNearestUntilCondition(Vector2Int gridPosition, searchCondition search) {
         Vector2Int currentCheckedPosition = gridPosition;
         Vector2Int center = gridPosition;
         byte step = 0;
@@ -123,42 +138,32 @@ public class GridManager : MonoBehaviour
         bool doNegativeY = false;
         bool doPositiveX = false;
 
-        while (grid.ContainsKey(currentCheckedPosition)) 
-        {
-            if (doPositiveY)
-            {
+        while (!search(currentCheckedPosition)) {
+            if (doPositiveY) {
                 currentCheckedPosition.y += 1;
-                if (currentCheckedPosition.y >= step + center.y)
-                {
+                if (currentCheckedPosition.y >= step + center.y) {
                     doPositiveY = false;
                 }
             }
-            else if (doNegativeX)
-            {
+            else if (doNegativeX) {
                 currentCheckedPosition.x -= 1;
-                if (currentCheckedPosition.x <= -step + center.x)
-                {
+                if (currentCheckedPosition.x <= -step + center.x) {
                     doNegativeX = false;
                 }
             }
-            else if (doNegativeY)
-            {
+            else if (doNegativeY) {
                 currentCheckedPosition.y -= 1;
-                if (currentCheckedPosition.y <= -step + center.y)
-                {
+                if (currentCheckedPosition.y <= -step + center.y) {
                     doNegativeY = false;
                 }
             }
-            else if (doPositiveX)
-            {
+            else if (doPositiveX) {
                 currentCheckedPosition.x += 1;
-                if (currentCheckedPosition.x >= step + center.x)
-                {
+                if (currentCheckedPosition.x >= step + center.x) {
                     doPositiveX = false;
                 }
             }
-            else
-            {
+            else {
                 step += 1;
                 currentCheckedPosition = new Vector2Int(center.x + step, center.y - step);
                 doPositiveY = true;

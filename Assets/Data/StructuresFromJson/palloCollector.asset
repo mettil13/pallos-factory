@@ -15,7 +15,6 @@ MonoBehaviour:
   name: palloCollector
   startingPrice: 5
   priceMultiplier: 5
-  maxPurchases: 20
   globalBadLuck: 0.02
   prodPerSecond: 1
   successProbability: 1

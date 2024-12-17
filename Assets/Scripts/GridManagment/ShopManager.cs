@@ -12,8 +12,8 @@ using UnityEngine.Playables;
     palloTransporter,
     palloCollector,
     palloSplitter,
-    palloUpgrader,
     palloDuplicator,
+    palloUpgrader,
     speedBooster,
     luckBooster,
     turret,
@@ -84,7 +84,7 @@ public class ShopManager : MonoBehaviour
         c = 0;
         while (c < cards.Length)
         {
-            cards[c].Init(placeableStructs[c].placeableSO.name, ((int)prices[c]), numberOfPlaceables[c], ((int)placeableStructs[c].placeableSO.maxPurchases), placeableStructs[c].tumbnail, this);
+            cards[c].Init(placeableStructs[c].placeableSO.name, ((int)prices[c]), numberOfPlaceables[c], placeableStructs[c].tumbnail, this);
             c++;
         }
     }
@@ -102,7 +102,7 @@ public class ShopManager : MonoBehaviour
         Placeable placeable = GameObject.Instantiate(placeablePref.gameObject).GetComponent<Placeable>();
         placeable.transform.position = structurePosition3;
         placeable.placeableReferenced = placeableStructs[((int)placeableType)].placeableSO;
-        placeable.Select();
+        GridManager.Instance.SelectedTile = placeable;
         CloseShop();
     }
 

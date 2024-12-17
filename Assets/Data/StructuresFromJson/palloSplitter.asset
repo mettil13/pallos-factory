@@ -15,7 +15,6 @@ MonoBehaviour:
   name: palloSplitter
   startingPrice: 2
   priceMultiplier: 1.5
-  maxPurchases: 0
   globalBadLuck: 0.01
   prodPerSecond: 1
   successProbability: 1

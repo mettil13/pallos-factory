@@ -14,6 +14,11 @@ public class Placeable : MonoBehaviour
 
     [SerializeField] public PlaceableSO placeableReferenced;
 
+    [SerializeField] protected bool isCorrupted = false;
+    public bool IsCorrupted {
+        get => isCorrupted;
+    }
+
     private void Start()
     {
         Init(GridManager.Instance.GetCellFromWorldPoint(transform.position), 0);
@@ -90,13 +95,20 @@ public class Placeable : MonoBehaviour
         transform.DORotate(-Vector2.up * ((int)direction) * 90, 0.1f, RotateMode.Fast);
     }
 
+    public virtual void Lock() {
+
+    }
+    public virtual void Unlock() {
+        Repair();
+    }
     public virtual void Corrupt()
     {
-        // corrupt the structure
+        isCorrupted = true;
     }
     public virtual void Repair()
     {
-        // repair the structure
+        isCorrupted = false;
+        Init(position, direction);
     }
 
     public virtual void Select() {

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PalloParticle
+  m_Name: PalloLvl1material
   m_Shader: {fileID: -6465566751694194690, guid: 2052ff70121320a4faf805689257264a,
     type: 3}
   m_Parent: {fileID: 0}
@@ -55,7 +55,6 @@ Material:
     - _reciprocalAdder: 0.87
     m_Colors:
     - _ColorMoltiplication: {r: 0, g: 1, b: 0.082274914, a: 1}
-    - _RimLightColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3737320459351847130
 MonoBehaviour:
