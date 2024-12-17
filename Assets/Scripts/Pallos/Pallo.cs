@@ -48,6 +48,16 @@ public class Pallo : MonoBehaviour
         container = structure;
         ParticleAndSoundManager.instance.SpawnPallo(container.Position);
     }
+    public Pallo DuplicatePallo()
+    {
+        GameObject palloObj = GameObject.Instantiate(gameObject, null);
+        Pallo pallo = palloObj.GetComponent<Pallo>();
+        pallo.container = this.container;
+        pallo.transform.position = transform.position;
+        pallo.transform.eulerAngles = transform.eulerAngles;
+        return pallo;
+    }
+
     private void OnMouseDown()
     {
         //Debug.Log("hellooooooo");

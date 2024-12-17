@@ -15,7 +15,6 @@ MonoBehaviour:
   name: luckBooster
   startingPrice: 40
   priceMultiplier: 2.25
-  maxPurchases: 0
   globalBadLuck: 0.04
   radius: 3
   additionalLuck: 0.25

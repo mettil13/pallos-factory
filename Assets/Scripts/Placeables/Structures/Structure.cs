@@ -5,11 +5,11 @@ using UnityEngine;
 
 public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
 {
-    [SerializeField] public short capacity;
+    [SerializeField] public short capacity = 1;
 
     [Header("Time")]
-    [SerializeField] public float processingTime;
-    [SerializeField] protected float processingTimeMultiplayer;
+    [SerializeField] public float processingTime = 1;
+    [SerializeField] protected float processingTimeMultiplayer = 1;
     protected float ProcessingTime => processingTime * processingTimeMultiplayer;
     protected float lastTime = 0;
 

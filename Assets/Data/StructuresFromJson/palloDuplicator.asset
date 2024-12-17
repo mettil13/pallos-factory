@@ -15,7 +15,6 @@ MonoBehaviour:
   name: palloDuplicator
   startingPrice: 20
   priceMultiplier: 1.8
-  maxPurchases: 0
   globalBadLuck: 0.02
   prodPerSecond: 0.75
   successProbability: 0.4
