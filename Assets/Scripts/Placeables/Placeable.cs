@@ -14,6 +14,11 @@ public class Placeable : MonoBehaviour
 
     [SerializeField] public PlaceableSO placeableReferenced;
 
+    [SerializeField] protected bool isCorrupted = false;
+    public bool IsCorrupted {
+        get => isCorrupted;
+    }
+
     private void Start()
     {
         Init(GridManager.Instance.GetCellFromWorldPoint(transform.position), 0);
@@ -92,11 +97,11 @@ public class Placeable : MonoBehaviour
 
     public virtual void Corrupt()
     {
-        // corrupt the structure
+        isCorrupted = true;
     }
     public virtual void Repair()
     {
-        // repair the structure
+        isCorrupted = false;
     }
 
     public virtual void Select() {
