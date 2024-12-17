@@ -45,6 +45,8 @@ public class GridManager : MonoBehaviour {
     [SerializeField] public Transform PlaceableContainer;
     [SerializeField] public Transform PallosContainer;
 
+    [Header("Game Settings")]
+    [SerializeField] public PalloSettings palloSettings;
 
     private void Awake() {
         if (instance == null) {

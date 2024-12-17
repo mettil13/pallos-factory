@@ -7,7 +7,10 @@ public class Pallo : MonoBehaviour
 {
     Structure container;
 
-    public float movementVelocity = 0.3f;
+    [SerializeField] public float movementVelocity = 0.3f;
+    [SerializeField] uint palloValue;
+    [SerializeField] uint currentLevel;
+    [SerializeField] MeshRenderer palloMesh;
 
     private Tweener movementTweener;
     private Tweener rotationTweener;
@@ -15,6 +18,8 @@ public class Pallo : MonoBehaviour
     public void Create()
     {
         ParticleAndSoundManager.instance.SpawnPallo(container.Position);
+        currentLevel = 0;
+        PowerUpPallo();
     }
     public void HandCollect()
     {
@@ -26,7 +31,7 @@ public class Pallo : MonoBehaviour
     public void Collect()
     {
         container.RemovePallo(this);
-        PlayerManager.instance.AddPalloPoints(1);
+        PlayerManager.instance.AddPalloPoints(palloValue);
         Destroy(gameObject);
     }
     public void Replace(Structure structure)
@@ -56,6 +61,15 @@ public class Pallo : MonoBehaviour
         pallo.transform.position = transform.position;
         pallo.transform.eulerAngles = transform.eulerAngles;
         return pallo;
+    }
+    public void PowerUpPallo()
+    {
+        currentLevel += 1;
+        Pallolevel level = GridManager.Instance.palloSettings.GetLevel(currentLevel);
+        currentLevel = level.level;
+        palloValue = level.value;
+        palloMesh.material = level.material;
+        transform.localScale = Vector3.one * level.scaleMultiplier;
     }
 
     private void OnMouseDown()

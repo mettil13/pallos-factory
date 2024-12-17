@@ -102,6 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementVelocity: 0.3
+  palloValue: 1
+  currentLevel: 1
+  palloMesh: {fileID: 3474627316327090567}
 --- !u!65 &2137437574225263326
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -319,6 +322,12 @@ PrefabInstance:
 --- !u!4 &626741194721310883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 985856b5a649c6146a09a37ccf0d5adc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1096653682378465096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3474627316327090567 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 985856b5a649c6146a09a37ccf0d5adc,
     type: 3}
   m_PrefabInstance: {fileID: 1096653682378465096}
   m_PrefabAsset: {fileID: 0}
