@@ -10,6 +10,15 @@ public class PalloGenerator : Structure
     {
         if (CanProcess())
         {
+            int random = Random.Range(0, 30);
+            if (random == 0)
+            {
+                // genera dark pallo
+                GameObject.Instantiate(GridManager.Instance.palloSettings.darkPallo).transform.position = transform.position;
+                return;
+            }
+
+
             GameObject palloObj = GameObject.Instantiate(palloPref);
             Pallo pallo = palloObj.GetComponent<Pallo>();
             pallo.ReplaceInstantly(this);

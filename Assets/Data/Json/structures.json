@@ -68,7 +68,7 @@
 "prodPerSecond": 0.75, 
 "successProbability": 0.40, 
 "radius": 1.00, 
-"capacity": 1.00, 
+"capacity": 2.00, 
 "additionalSpeed": 0, 
 "additionalLuck": 0, 
 "value": 2.0999999999999996, 

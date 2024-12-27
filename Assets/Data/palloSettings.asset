@@ -13,11 +13,17 @@ MonoBehaviour:
   m_Name: palloSettings
   m_EditorClassIdentifier: 
   palloLevels:
-  - level: 0
+  - level: 1
     value: 1
     material: {fileID: 2100000, guid: 479c1dbd772e5cd47b58b12862220f69, type: 2}
     scaleMultiplier: 0.9
-  - level: 1
+  - level: 2
     value: 3
     material: {fileID: 2100000, guid: 9dffd5eb07b778449b2b4df6c678c59f, type: 2}
     scaleMultiplier: 1.1
+  structureMaterialDefault: {fileID: 2100000, guid: ac7415559a374c5488b61ea33907d63d,
+    type: 2}
+  structureMaterialCorrupted: {fileID: 2100000, guid: 9b3c79e73bdcc7745acceca588dc5454,
+    type: 2}
+  darkPallo: {fileID: 8219738330653127809, guid: 7a27df8979830304bbb6e556928b5a6a,
+    type: 3}

@@ -18,6 +18,6 @@ MonoBehaviour:
   globalBadLuck: 0.02
   prodPerSecond: 0.75
   successProbability: 0.4
-  capacity: 1
+  capacity: 2
   luck: 0.05
   badLuck: 0.15

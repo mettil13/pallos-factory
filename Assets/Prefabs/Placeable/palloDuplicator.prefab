@@ -53,6 +53,9 @@ MonoBehaviour:
   direction: 0
   placeableReferenced: {fileID: 0}
   isCorrupted: 0
+  meshes:
+  - {fileID: 6071785913865615060}
+  - {fileID: 6071785913865615060}
   capacity: 5
   processingTime: 1
   processingTimeMultiplayer: 1

@@ -51,6 +51,10 @@ MonoBehaviour:
   direction: 0
   placeableReferenced: {fileID: 11400000, guid: de7c47d04a928fe4c8a0809aa454da44,
     type: 2}
+  isCorrupted: 0
+  meshes:
+  - {fileID: 704627751285876896}
+  - {fileID: 9076258685097198331}
   capacity: 0
   processingTime: 0
   processingTimeMultiplayer: 1
@@ -305,9 +309,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16191ca6aa2f6e14caf14a2182ce4331, type: 3}
+--- !u!23 &704627751285876896 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 16191ca6aa2f6e14caf14a2182ce4331,
+    type: 3}
+  m_PrefabInstance: {fileID: 2163630616420316196}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1840982585968759759 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 16191ca6aa2f6e14caf14a2182ce4331,
+    type: 3}
+  m_PrefabInstance: {fileID: 2163630616420316196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &9076258685097198331 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: 16191ca6aa2f6e14caf14a2182ce4331,
     type: 3}
   m_PrefabInstance: {fileID: 2163630616420316196}
   m_PrefabAsset: {fileID: 0}

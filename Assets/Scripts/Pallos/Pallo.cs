@@ -23,7 +23,7 @@ public class Pallo : MonoBehaviour
     }
     public void HandCollect()
     {
-        ParticleAndSoundManager.instance.collectPallo(container.Position);
+        ParticleAndSoundManager.instance.collectPallo(container.Position, currentLevel);
         //Debug.Log("Pallo collected in position : " + container.Position);
         //Debug.Break();
         Collect();

@@ -16,6 +16,7 @@ public class PalloSettings : ScriptableObject
     [SerializeField] Pallolevel[] palloLevels;
     [SerializeField] public Material structureMaterialDefault;
     [SerializeField] public Material structureMaterialCorrupted;
+    [SerializeField] public GameObject darkPallo;
 
     public Pallolevel GetLevel(uint level)
     {
@@ -30,7 +31,7 @@ public class PalloSettings : ScriptableObject
         byte c = 0;
         while (c < palloLevels.Length)
         {
-            palloLevels[c].level = c;
+            palloLevels[c].level = ((uint)(c + 1));
             c++;
         }
     }

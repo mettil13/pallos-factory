@@ -51,6 +51,9 @@ MonoBehaviour:
   direction: 0
   placeableReferenced: {fileID: 11400000, guid: de7c47d04a928fe4c8a0809aa454da44,
     type: 2}
+  isCorrupted: 0
+  meshes:
+  - {fileID: 1709023912092250209}
   capacity: 0
   processingTime: 0
   processingTimeMultiplayer: 1
@@ -216,6 +219,12 @@ PrefabInstance:
 --- !u!4 &575476611365194510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd731825f7621494f8a2e4276826d128,
+    type: 3}
+  m_PrefabInstance: {fileID: 33277340746951909}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1709023912092250209 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: dd731825f7621494f8a2e4276826d128,
     type: 3}
   m_PrefabInstance: {fileID: 33277340746951909}
   m_PrefabAsset: {fileID: 0}

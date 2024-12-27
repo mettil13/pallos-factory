@@ -15,6 +15,9 @@ public class Placeable : MonoBehaviour
     [SerializeField] public PlaceableSO placeableReferenced;
 
     [SerializeField] protected bool isCorrupted = false;
+
+    [SerializeField] MeshRenderer[] meshes;
+    
     public bool IsCorrupted {
         get => isCorrupted;
     }
@@ -33,6 +36,10 @@ public class Placeable : MonoBehaviour
         string name = gameObject.name;
         placeableReferenced.SetPlaceableInfo(this);
         ApplyRotation();
+        foreach (MeshRenderer mesh in meshes)
+        {
+            mesh.material = GridManager.Instance.palloSettings.structureMaterialDefault;
+        }
     }
 
     public void MoveToClosestCellRelativeToWorld(Vector3 worldPosition) {
@@ -104,16 +111,23 @@ public class Placeable : MonoBehaviour
     public virtual void Corrupt()
     {
         isCorrupted = true;
+        foreach (MeshRenderer mesh in meshes)
+        {
+            mesh.material = GridManager.Instance.palloSettings.structureMaterialCorrupted;
+        }
+        ParticleAndSoundManager.instance.CorruptStructure(position);
     }
     public virtual void Repair()
     {
         isCorrupted = false;
+        ParticleAndSoundManager.instance.RepairStructure(position);
         Init(position, direction);
     }
 
     public virtual void Select() {
         //Debug.Log(gameObject.name + " selected");
         SelectGizmo.instance.SetGizmoOnGO(gameObject);
+        Repair();
     }
     public void Deselect() {
         //Debug.Log(gameObject.name + " deselected");
