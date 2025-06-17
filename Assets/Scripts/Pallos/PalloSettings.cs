@@ -16,6 +16,9 @@ public class PalloSettings : ScriptableObject
     [SerializeField] Pallolevel[] palloLevels;
     [SerializeField] public Material structureMaterialDefault;
     [SerializeField] public Material structureMaterialCorrupted;
+    [SerializeField] public Material palloMaterialDefault;
+    [SerializeField] public Material palloMaterialCorrupted;
+    [SerializeField] public GameObject pallo;
     [SerializeField] public GameObject darkPallo;
 
     public Pallolevel GetLevel(uint level)

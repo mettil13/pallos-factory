@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 //using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
-public class DarkPallo : MonoBehaviour
+public class DarkPallo : PalloGenericAnimation
 {
     public float decisionTime = 2;
     public float lastDecisionTime = 0;
@@ -21,7 +21,12 @@ public class DarkPallo : MonoBehaviour
     void Update()
     {
         if(state == darkPalloState.ON_STRUCTURE) {
-            if(Time.time > lastDecisionTime + decisionTime) {
+            if (target.Position != GridManager.Instance.GetCellFromWorldPoint(transform.position)) 
+            { 
+                state = darkPalloState.APPROACHING; 
+                target = null; 
+            }
+            else if(Time.time > lastDecisionTime + decisionTime) {
                 lastDecisionTime = Time.time;
                 float rand = Random.Range(0, 2);
                 switch (rand) {
@@ -79,6 +84,10 @@ public class DarkPallo : MonoBehaviour
 
         }
     }
+    private void Awake()
+    {
+        Create();
+    }
 
     private Placeable FindNewTarget() {
         Vector2Int cellPos = GridManager.Instance.GetCellFromWorldPoint(transform.position);
@@ -91,15 +100,27 @@ public class DarkPallo : MonoBehaviour
         }
     }
 
+
     private void OnMouseDown() {
-        if (movementTween != null) {
+        Remove();
+    }
+    public override void Remove()
+    {
+        base.Remove();
+        if (movementTween != null)
+        {
             movementTween.Kill();
         }
-        if (rotationTween != null) {
+        if (rotationTween != null)
+        {
             rotationTween.Kill();
         }
-
+        ParticleAndSoundManager.instance.CollectDarkPallo(GridManager.Instance.GetCellFromWorldPoint(transform.position));
         Destroy(gameObject);
     }
-
+    public override void Create()
+    {
+        base.Create();
+        transform.parent = GridManager.Instance.darkPallosContainer;
+    }
 }

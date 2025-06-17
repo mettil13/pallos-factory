@@ -25,7 +25,8 @@ public class SelectGizmo : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void DeactivateGizmo() {
+    public void DeactivateGizmo(GameObject go) {
+        if (selectedGO != go) return;
         selectedGO = null;
         gameObject.SetActive(false);
     }

@@ -25,5 +25,10 @@ MonoBehaviour:
     type: 2}
   structureMaterialCorrupted: {fileID: 2100000, guid: 9b3c79e73bdcc7745acceca588dc5454,
     type: 2}
+  palloMaterialDefault: {fileID: 2100000, guid: 479c1dbd772e5cd47b58b12862220f69,
+    type: 2}
+  palloMaterialCorrupted: {fileID: 2100000, guid: 7f0fea72dd0a12d4c80699e863cd4150,
+    type: 2}
+  pallo: {fileID: 3349729072858100620, guid: 2fa8879b4cd909445ad6b48a82ca9845, type: 3}
   darkPallo: {fileID: 8219738330653127809, guid: 7a27df8979830304bbb6e556928b5a6a,
     type: 3}

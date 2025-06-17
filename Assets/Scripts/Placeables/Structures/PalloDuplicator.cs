@@ -6,17 +6,17 @@ public class PalloDuplicator : Structure
 {
     [SerializeField] Direction output1;
     [SerializeField] Direction output2;
-    
-    private void Update()
+
+    public override void UpdatePlaceable()
     {
+        base.UpdatePlaceable();
         if (CanProcess())
         {
             if (pallos.Count > 0)
             {
                 Pallo pallo = pallos[0].DuplicatePallo();
                 pallo.ReplaceInstantly(this);
-                pallo.transform.parent = GridManager.Instance.PallosContainer;
-                if (!AddPallo(pallo)) GameObject.Destroy(pallo.gameObject);
+                if (!AddPallo(pallo)) pallo.Remove();
                 output = output2;
                 MovePalloToNext();
             }
@@ -24,7 +24,10 @@ public class PalloDuplicator : Structure
             MovePalloToNext();
         }
     }
-
+    //private void Update()
+    //{
+        
+    //}
     public override bool TryInsertPalloFrom(Direction previousStructureDirection, Pallo pallo)
     {
         if (pallos.Count != 0) return false;

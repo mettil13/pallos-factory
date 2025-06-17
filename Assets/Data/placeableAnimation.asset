@@ -1,0 +1,377 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ec61664799fd24997f3bb23e8cc78e, type: 3}
+  m_Name: placeableAnimation
+  m_EditorClassIdentifier: 
+  doSelectAnimation: 1
+  selectAnimation:
+    startSize: {x: 1, y: 1, z: 1}
+    startPosition: {x: 0, y: 0, z: 0}
+    endSize: {x: 1.1, y: 0.8, z: 1.1}
+    endPosition: {x: 0, y: 0, z: 0}
+    transitionDuration: 0.25
+    sizeTransitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 13.428604
+        outSlope: 13.428604
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.061218556
+      - serializedVersion: 3
+        time: 0.2
+        value: 1
+        inSlope: 0.01254334
+        outSlope: 0.01254334
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.1536288
+      - serializedVersion: 3
+        time: 0.64528054
+        value: 0.3639774
+        inSlope: -1.621721
+        outSlope: -1.621721
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -0.11833073
+        outSlope: -0.11833073
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.29725662
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    positionTransitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    maxTweens: 1
+    currentTween: 0
+  doMoveAnimation: 1
+  moveAnimation:
+    startSize: {x: 1, y: 1, z: 1}
+    startPosition: {x: 0, y: 0, z: 0}
+    endSize: {x: 0.8, y: 1.2, z: 0.8}
+    endPosition: {x: 0, y: 0.3, z: 0}
+    transitionDuration: 0.3
+    sizeTransitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0.023690967
+        outSlope: 0.023690967
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.99617964
+      - serializedVersion: 3
+        time: 0.2
+        value: 1
+        inSlope: 0.01254334
+        outSlope: 0.01254334
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.1536288
+      - serializedVersion: 3
+        time: 0.64528054
+        value: 0.3639774
+        inSlope: -1.621721
+        outSlope: -1.621721
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -0.11833073
+        outSlope: -0.11833073
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.29725662
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    positionTransitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0.023690967
+        outSlope: 0.023690967
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.99617964
+      - serializedVersion: 3
+        time: 0.2
+        value: 1
+        inSlope: 0.01254334
+        outSlope: 0.01254334
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.1536288
+      - serializedVersion: 3
+        time: 0.64528054
+        value: 0.3639774
+        inSlope: -1.621721
+        outSlope: -1.621721
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -0.11833073
+        outSlope: -0.11833073
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.29725662
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    maxTweens: 1
+    currentTween: 0
+  rotationMultiplier: 40
+  rotationToSpeedTransitionDuration: 0.15
+  rotationTransitionDuration: 0.5
+  doRotateAnimation: 1
+  rotateAnimation:
+    startSize: {x: 1, y: 1, z: 1}
+    startPosition: {x: 0, y: 0, z: 0}
+    endSize: {x: 1.1, y: 0.8, z: 1.1}
+    endPosition: {x: 0, y: 0, z: 0}
+    transitionDuration: 0.25
+    sizeTransitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 13.428604
+        outSlope: 13.428604
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.061218556
+      - serializedVersion: 3
+        time: 0.2
+        value: 1
+        inSlope: 0.01254334
+        outSlope: 0.01254334
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.1536288
+      - serializedVersion: 3
+        time: 0.64528054
+        value: 0.3639774
+        inSlope: -1.621721
+        outSlope: -1.621721
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -0.11833073
+        outSlope: -0.11833073
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.29725662
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    positionTransitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    maxTweens: 1
+    currentTween: 0
+  doBuyAnimation: 0
+  buyAnimation:
+    startSize: {x: 0, y: 0, z: 0}
+    startPosition: {x: 0, y: 0, z: 0}
+    endSize: {x: 0, y: 0, z: 0}
+    endPosition: {x: 0, y: 0, z: 0}
+    transitionDuration: 0
+    sizeTransitionCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    positionTransitionCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    maxTweens: 0
+    currentTween: 0
+  doRepairAnimation: 1
+  repairAnimation:
+    startSize: {x: 1, y: 1, z: 1}
+    startPosition: {x: 0, y: 0, z: 0}
+    endSize: {x: 1.1, y: 0.8, z: 1.1}
+    endPosition: {x: 0, y: 0, z: 0}
+    transitionDuration: 0.25
+    sizeTransitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 13.428604
+        outSlope: 13.428604
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.061218556
+      - serializedVersion: 3
+        time: 0.2
+        value: 1
+        inSlope: 0.01254334
+        outSlope: 0.01254334
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.1536288
+      - serializedVersion: 3
+        time: 0.64528054
+        value: 0.3639774
+        inSlope: -1.621721
+        outSlope: -1.621721
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -0.11833073
+        outSlope: -0.11833073
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.29725662
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    positionTransitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    maxTweens: 1
+    currentTween: 0
+  doCorruptAnimation: 0
+  corruptAnimation:
+    startSize: {x: 0, y: 0, z: 0}
+    startPosition: {x: 0, y: 0, z: 0}
+    endSize: {x: 0, y: 0, z: 0}
+    endPosition: {x: 0, y: 0, z: 0}
+    transitionDuration: 0
+    sizeTransitionCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    positionTransitionCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    maxTweens: 0
+    currentTween: 0

@@ -11,7 +11,6 @@ public class ParticleAndSoundManager : MonoBehaviour
     [SerializeField] ParticleSystem darkPalloMoveGeneralParticle;
     [SerializeField] ParticleSystem darkPalloCollectParticle;
     [SerializeField] ParticleSystem repairStructureParticle;
-
     [SerializeField] ParticleSystem spawnPalloParticle;
     
     private void Awake()

@@ -8,9 +8,9 @@ public class PalloSplitter : Structure
     [SerializeField] Direction output2;
     bool doOutput1 = true;
 
-
-    private void Update()
+    public override void UpdatePlaceable()
     {
+        base.UpdatePlaceable();
         if (CanProcess())
         {
             if (doOutput1)
@@ -27,4 +27,9 @@ public class PalloSplitter : Structure
             MovePalloToNext();
         }
     }
+
+    //private void Update()
+    //{
+        
+    //}
 }

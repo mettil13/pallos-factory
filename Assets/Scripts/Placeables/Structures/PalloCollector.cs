@@ -1,14 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class PalloCollector : Structure
 {
-    private void Update()
+    public override void UpdatePlaceable()
     {
+        base.UpdatePlaceable();
         if (pallos.Count > 0)
-            pallos[0].Collect();
+        {
+            foreach (Pallo pallo in pallos)
+            {
+                pallo.transform.DOScale(0, 1).OnComplete(() => pallo.Collect());
+            }
+            pallos.Clear();
+            //pallos[0].transform.DOScale(0, 1).OnComplete(() => pallos[0].Collect()); 
+        }
     }
+    //private void Update()
+    //{
+        
+    //}
     //protected override void ProcessPallo(Pallo pallo)
     //{
 

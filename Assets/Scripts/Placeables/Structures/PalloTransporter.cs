@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PalloTransporter : Structure
 {
-    private void Update()
+    public override void UpdatePlaceable()
     {
+        base.UpdatePlaceable();
         if (CanProcess())
         {
             MovePalloToNext();
         }
     }
+    //private void Update()
+    //{
+        
+    //}
 }

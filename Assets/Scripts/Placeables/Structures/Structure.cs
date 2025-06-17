@@ -48,7 +48,7 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
     [SerializeField] ParticleSystem processParticle;
 
     Coroutine moveRoutine;
-    
+
     public virtual bool TryInsertPalloFrom(Direction previousStructureDirection, Pallo pallo)
     {
         //Debug.Log(previousStructureDirection + " - " + direction + "  " + gameObject.name);
@@ -165,8 +165,26 @@ public abstract class Structure : Placeable, IBoostableSpeed, IBoostableLuck
         base.ApplyRotation();
     }
 
-    public override void Lock() {
-        base.Lock();
+    public override void Corrupt()
+    {
+        foreach (Pallo pallo in pallos)
+            pallo.Remove();
+        pallos.Clear();
         capacity = 0;
+        base.Corrupt();
     }
+    public override void Repair()
+    {
+        base.Repair();
+        //Init(position, direction);
+    }
+    //public override void Lock() {
+        
+    //    base.Lock();
+    //    capacity = 0;
+    //}
+    //public override void Unlock()
+    //{
+    //    Init(position, direction);
+    //}
 }

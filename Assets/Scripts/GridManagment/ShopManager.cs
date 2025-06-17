@@ -102,6 +102,7 @@ public class ShopManager : MonoBehaviour
         Placeable placeable = GameObject.Instantiate(placeablePref.gameObject).GetComponent<Placeable>();
         placeable.transform.position = structurePosition3;
         placeable.placeableReferenced = placeableStructs[((int)placeableType)].placeableSO;
+        //GridManager.Instance.placeableAnimations.DoBuyAnimation(placeable);
         GridManager.Instance.SelectedTile = placeable;
         CloseShop();
     }

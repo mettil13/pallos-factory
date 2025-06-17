@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PalloGenerator : Structure
 {
-    [SerializeField] protected GameObject palloPref;
-
-    private void Update()
+    public override void UpdatePlaceable()
     {
+        if (isCorrupted) return;
+        base.UpdatePlaceable();
         if (CanProcess())
         {
             int random = Random.Range(0, 30);
@@ -18,13 +18,14 @@ public class PalloGenerator : Structure
                 return;
             }
 
-
-            GameObject palloObj = GameObject.Instantiate(palloPref);
-            Pallo pallo = palloObj.GetComponent<Pallo>();
-            pallo.ReplaceInstantly(this);
-            pallo.transform.parent = GridManager.Instance.PallosContainer;
-            if (!AddPallo(pallo)) GameObject.Destroy(palloObj);
+            Pallo pallo = PalloPool.instance.GeneratePallo(this);
+            if (!AddPallo(pallo)) pallo.Remove();
             MovePalloToNext();
         }
     }
+
+    //private void Update()
+    //{
+        
+    //}
 }

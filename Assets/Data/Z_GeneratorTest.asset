@@ -15,10 +15,9 @@ MonoBehaviour:
   name: palloGenerator
   startingPrice: 10
   priceMultiplier: 1.7
-  maxPurchases: 20
   globalBadLuck: 0
   prodPerSecond: 1
   successProbability: 1
-  capacity: 10
+  capacity: 2
   luck: 0
   badLuck: 0

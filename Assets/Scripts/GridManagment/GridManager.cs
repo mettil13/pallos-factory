@@ -42,11 +42,17 @@ public class GridManager : MonoBehaviour {
     }
 
     [Header("Containers")]
-    [SerializeField] public Transform PlaceableContainer;
-    [SerializeField] public Transform PallosContainer;
+    [SerializeField] public Transform placeableContainer;
+    [SerializeField] public Transform pallosContainer;
+    [SerializeField] public Transform darkPallosContainer;
+
+    [Header("Pallos managment")]
+    [SerializeField] private PallosDictionary palloAnimations;
+    public List<PalloGenericAnimation> pallosAnimations => palloAnimations.Values.ToList();
 
     [Header("Game Settings")]
     [SerializeField] public PalloSettings palloSettings;
+    [SerializeField] public PlaceableAnimationsSO placeableAnimations;
 
     private void Awake() {
         if (instance == null) {
@@ -54,6 +60,18 @@ public class GridManager : MonoBehaviour {
         }
         else {
             Destroy(gameObject);
+        }
+        placeableAnimations = Instantiate(placeableAnimations);
+        placeableAnimations.Init();
+    }
+    
+    // update placeable system
+    private void Update()
+    {
+        List<Placeable> placeables = PlaceablesPlaced;
+        foreach (Placeable placeable in placeables)
+        {
+            placeable.UpdatePlaceableGeneric();
         }
     }
 
@@ -98,7 +116,7 @@ public class GridManager : MonoBehaviour {
     public void AddTileToGridCache(Vector2Int gridPosition, Placeable tile) {
         if (!ThereIsTileInPosition(gridPosition)) {
             grid.Add(gridPosition, tile);
-            tile.transform.parent = PlaceableContainer;
+            tile.transform.parent = placeableContainer;
         }
     }
     public void RemoveTileFromGridCache(Vector2Int gridPosition) {
@@ -175,6 +193,16 @@ public class GridManager : MonoBehaviour {
 
         return currentCheckedPosition;
     }
+
+    public void AddPallo(PalloGenericAnimation pallo, GameObject palloObject)
+    {
+        if (palloAnimations.ContainsKey(palloObject)) return;
+        palloAnimations.Add(palloObject, pallo);
+    }
+    public void RemovePallo(GameObject palloObject)
+    {
+        palloAnimations.Remove(palloObject);
+    }
 }
 
 [Serializable] public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
@@ -210,3 +238,4 @@ public class GridManager : MonoBehaviour {
     }
 }
 [Serializable] public class GridDictionary : SerializableDictionary<Vector2Int, Placeable> { }
+[Serializable] public class PallosDictionary : SerializableDictionary<GameObject, PalloGenericAnimation> { }
